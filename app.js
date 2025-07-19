@@ -3,7 +3,7 @@ const appData = {
   kaa_info: {
     name: "Kokomo Art Association",
     founded: 1926,
-    mission: "Bringing art to the community",
+    mission: "To bring art to the community and bring the community to art.",
     contact: "media@kaaonline.org",
     venues: [
       {
