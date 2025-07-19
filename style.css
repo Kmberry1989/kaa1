@@ -144,6 +144,37 @@
   --container-xl: 1280px;
 }
 
+/* Footer Sponsor Logos */
+.footer-sponsors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-top: var(--space-8);
+}
+
+.footer-sponsors img {
+  width: auto;
+  max-width: 120px;
+  height: auto;
+}
+
+/* Sponsor section background and dividers */
+.footer-sponsor-section {
+  margin-top: var(--space-32);
+  padding-top: var(--space-32);
+  padding-bottom: var(--space-32);
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (max-width: 640px) {
+  .footer-sponsors img {
+    max-width: 90px;
+  }
+}
+
 /* Dark mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
