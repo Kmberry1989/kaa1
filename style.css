@@ -169,6 +169,35 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.calendar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
+
+.calendar-links a {
+  font-size: var(--font-size-sm);
+}
+
+.calendar-link {
+  text-align: right;
+  margin-top: var(--space-24);
+}
+
+.calendar-add {
+  margin-top: var(--space-16);
+}
+
+.add-to-calendar {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
 @media (max-width: 640px) {
   .footer-sponsors img {
     max-width: 90px;
