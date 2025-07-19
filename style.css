@@ -169,6 +169,8 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+
+
 @media (max-width: 640px) {
   .footer-sponsors img {
     max-width: 90px;
