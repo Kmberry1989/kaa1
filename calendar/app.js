@@ -127,7 +127,7 @@ const eventsData = [
 
 // Global variables
 let calendar;
-let currentView = 'month';
+let currentView = 'list';
 let filteredEvents = [...eventsData];
 
 // DOM elements
@@ -152,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeEventFilter();
     initializeKeyboardNavigation();
     populateListView();
+    switchToListView();
     
     // Hide loading overlay after short delay to allow calendar render
     setTimeout(() => {
