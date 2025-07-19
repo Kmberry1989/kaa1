@@ -881,6 +881,20 @@ h6 { font-size: var(--font-size-md); }
   align-items: center;
 }
 
+.header-icon {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.header-icon:first-child {
+  margin-right: var(--space-16);
+}
+
+.header-icon:last-of-type {
+  margin-left: var(--space-16);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
