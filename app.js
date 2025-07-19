@@ -80,7 +80,7 @@ const appData = {
       details: "70/30 commission split (75/25 for members). Art delivery March 1, pickup April 26."
     },
     {
-      title: "Junk Journal Workshop", 
+      title: "Junk Journal Workshop",
       date: "March 15, 2025",
       time: "12:00PM - 4:00PM",
       venue: "Artworks Gallery",
@@ -89,11 +89,77 @@ const appData = {
       description: "Create handmade journals using recycled materials. Limited spots, registration required."
     },
     {
+      title: "2025 Photo Show",
+      dates: "March 5 - March 29, 2025",
+      venue: "Kokomo Art Center",
+      description: "Community photography exhibition showcasing the talent of local photographers."
+    },
+    {
+      title: "Circus Is Coming to Town",
+      dates: "May 2 - June 27, 2025",
+      venue: "Kokomo Art Center",
+      description: "Partnership exhibition with the International Circus Museum featuring circus-themed artworks and silent auction items."
+    },
+    {
       title: "97th Annual Spring Art Show",
-      dates: "Late May - June 1, 2025", 
+      dates: "May 22 - June 1, 2025",
       venue: "Kokomo Art Center",
       hours: "Tue-Sat 1:00PM-4:00PM",
       description: "Annual juried exhibition featuring local and regional artists. Closing reception June 1 at 2:00PM."
+    },
+    {
+      title: "Splash of Watercolor Exhibit",
+      dates: "July 1 - July 30, 2025",
+      venue: "Kokomo Art Center",
+      description: "Delicately beautiful watercolor artworks by Jennie Moore, Judy Arthur, Cissie Seidman, and Dixie Bennett."
+    },
+    {
+      title: "Guest Artist Reception: Brandon C. Bass",
+      date: "July 12, 2025",
+      time: "12:00PM - 3:00PM",
+      venue: "Artworks Gallery",
+      description: "Free reception featuring portraits, military subjects, pets & landscapes by Brandon C. Bass. Light refreshments provided."
+    },
+    {
+      title: "First Friday \"Get Schooled!\"",
+      date: "August 1, 2025",
+      time: "5:30PM - 8:00PM",
+      venue: "Downtown Kokomo",
+      description: "Back-to-school themed art demos and activities. KAA hosts open house in Artworks Gallery."
+    },
+    {
+      title: "First Friday \"Art Walk\"",
+      date: "September 5, 2025",
+      time: "5:30PM - 8:00PM",
+      venue: "Downtown Kokomo",
+      description: "Monthly arts-driven street festival with gallery programming and community art activities."
+    },
+    {
+      title: "First Friday \"Masquerade\"",
+      date: "October 3, 2025",
+      time: "5:30PM - 8:00PM",
+      venue: "Downtown Kokomo",
+      description: "Halloween-themed First Friday with masquerade activities and special gallery exhibitions."
+    },
+    {
+      title: "First Friday \"Shop & Stroll\"",
+      date: "November 7, 2025",
+      time: "5:30PM - 8:00PM",
+      venue: "Downtown Kokomo",
+      description: "Holiday shopping-themed First Friday with local artists showcasing gift-worthy works."
+    },
+    {
+      title: "Holiday Bazaar",
+      dates: "November 1 - December 23, 2025",
+      venue: "Artworks Gallery",
+      description: "Extended holiday market featuring local artists and craftspeople. Open Mon-Sat 12-4 PM with extended hours on First Fridays."
+    },
+    {
+      title: "First Friday \"Ugly Sweater\"",
+      date: "December 5, 2025",
+      time: "5:30PM - 8:00PM",
+      venue: "Downtown Kokomo",
+      description: "Holiday-themed First Friday with ugly sweater contest and festive art activities."
     }
   ],
   membership: [
@@ -148,9 +214,10 @@ const appData = {
 };
 
 // DOM elements
-let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody;
+let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody, navContent;
 let lastFocusedElement = null;
 let isScrolling = false;
+let navScrollTimeout = null;
 
 // Initialize application when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
@@ -188,6 +255,7 @@ function initializeElements() {
   modalClose = document.getElementById('modalClose');
   modalTitle = document.getElementById('modalTitle');
   modalBody = document.getElementById('modalBody');
+  navContent = navOverlay ? navOverlay.querySelector('.nav-overlay-content') : null;
   
   console.log('📋 Element status:', {
     hamburger: hamburger ? '✅' : '❌',
@@ -196,7 +264,8 @@ function initializeElements() {
     modal: modal ? '✅' : '❌',
     modalClose: modalClose ? '✅' : '❌',
     modalTitle: modalTitle ? '✅' : '❌',
-    modalBody: modalBody ? '✅' : '❌'
+    modalBody: modalBody ? '✅' : '❌',
+    navContent: navContent ? '✅' : '❌'
   });
   
   // Ensure modal is hidden initially
@@ -307,6 +376,11 @@ function openNavOverlay() {
   navOverlay.setAttribute('aria-hidden', 'false');
   hamburger.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
+
+  if (navContent) {
+    navContent.scrollTop = 0;
+    navContent.addEventListener('scroll', handleNavScroll);
+  }
   
   document.body.style.overflow = 'hidden';
   
@@ -333,10 +407,24 @@ function closeNavOverlay() {
   navOverlay.setAttribute('aria-hidden', 'true');
   hamburger.classList.remove('active');
   hamburger.setAttribute('aria-expanded', 'false');
+
+  if (navContent) {
+    navContent.removeEventListener('scroll', handleNavScroll);
+    navContent.classList.remove('scrolling');
+  }
   
   document.body.style.overflow = 'auto';
-  
+
   console.log('✅ Navigation overlay closed');
+}
+
+function handleNavScroll() {
+  if (!navContent) return;
+  navContent.classList.add('scrolling');
+  clearTimeout(navScrollTimeout);
+  navScrollTimeout = setTimeout(() => {
+    navContent.classList.remove('scrolling');
+  }, 150);
 }
 
 // Populate content from data
