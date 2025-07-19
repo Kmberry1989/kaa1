@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kokomo Art Association – Cinematic Shadow</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="loading">
+    <!-- HEADER & HAMBURGER-->
+    <header
+      class="site-header flex justify-between items-center px-16 py-8"
+      id="top"
+    >
+      <a href="#hero" class="logo" aria-label="Kokomo Art Association Home">
+        KAA
+      </a>
+      <button
+        id="menuToggle"
+        class="hamburger btn btn--secondary"
+        aria-label="Toggle navigation menu"
+        aria-controls="navOverlay"
+        aria-expanded="false"
+      >
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </header>
+
+    <!-- FULL-SCREEN NAVIGATION OVERLAY -->
+    <nav
+      id="navOverlay"
+      class="nav-overlay"
+      aria-label="Primary"
+      hidden
+    >
+      <button
+        id="navClose"
+        class="nav-close btn btn--outline"
+        aria-label="Close Menu"
+      >
+        &times;
+      </button>
+      <ul class="nav-overlay__list" id="overlayNavList">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#galleries">Galleries</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="mainContent">
+      <!-- HERO -->
+      <section id="hero" class="hero section" data-parallax="0.25">
+        <div class="container flex flex-col items-center justify-center text-center gap-16">
+          <h1 class="hero__title">
+            Bringing <span class="highlight">ART</span> to the Community
+          </h1>
+          <div class="flex gap-16 justify-center flex-wrap">
+            <a
+              class="btn btn--primary"
+              href="mailto:media@kaaonline.org?subject=Membership%20Inquiry"
+              >Become&nbsp;a&nbsp;Member</a
+            >
+            <a href="#events" class="btn btn--outline">View Events</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section container fade-section">
+        <h2 class="section__heading">About</h2>
+        <p>
+          Founded in 1926, the Kokomo Art Association (KAA) exists to fulfill a
+          singular mission: <strong>Bringing art to the community</strong>. For
+          nearly a century, KAA has created vibrant spaces where artists,
+          families, students, and supporters come together to celebrate
+          creativity.
+        </p>
+        <h3 class="mt-8 mb-8">A Timeline of Creativity</h3>
+        <ul class="timeline" id="timeline"></ul>
+      </section>
+
+      <!-- GALLERIES -->
+      <section id="galleries" class="section container fade-section">
+        <h2 class="section__heading">Galleries</h2>
+        <div id="galleriesGrid" class="gallery-grid"></div>
+      </section>
+
+      <!-- ARTISTS -->
+      <section id="artists" class="section container fade-section">
+        <h2 class="section__heading">Artists</h2>
+        <div id="artistsGrid" class="artists-grid"></div>
+      </section>
+
+      <!-- CLASSES -->
+      <section id="classes" class="section container fade-section">
+        <h2 class="section__heading">Classes</h2>
+        <div id="classesList" class="classes-list"></div>
+      </section>
+
+      <!-- MEMBERSHIP -->
+      <section id="membership" class="section container fade-section">
+        <h2 class="section__heading">Membership</h2>
+        <div id="membershipGrid" class="membership-grid"></div>
+      </section>
+
+      <!-- EVENTS -->
+      <section id="events" class="section container fade-section">
+        <h2 class="section__heading">Events</h2>
+        <div id="eventsGrid" class="events-grid"></div>
+      </section>
+
+      <!-- SPONSORS -->
+      <section id="sponsors" class="section container fade-section">
+        <h2 class="section__heading">Sponsors</h2>
+        <div id="sponsorsGrid" class="sponsors-grid"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section container fade-section">
+        <h2 class="section__heading">Contact</h2>
+        <form
+          action="mailto:media@kaaonline.org"
+          method="post"
+          enctype="text/plain"
+          class="contact-form flex flex-col gap-16"
+          aria-label="Contact form"
+        >
+          <div class="form-group">
+            <label class="form-label" for="contactName">Name</label>
+            <input
+              id="contactName"
+              name="name"
+              type="text"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactEmail">Email</label>
+            <input
+              id="contactEmail"
+              name="email"
+              type="email"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message</label>
+            <textarea
+              id="contactMessage"
+              name="message"
+              rows="5"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full-width">
+            Send Message
+          </button>
+        </form>
+        <div class="contact-info mt-8">
+          <p><strong>Email:</strong> media@kaaonline.org</p>
+          <p><strong>Artworks Gallery:</strong> 22 W. Walnut St, Kokomo, IN 46901</p>
+          <p><strong>Kokomo Art Center:</strong> 1500 N. Washington St, Kokomo, IN 46901</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ARTIST MODAL -->
+    <div
+      id="artistModal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="artistModalTitle"
+      hidden
+    >
+      <div class="modal__content card">
+        <button
+          class="modal__close btn btn--outline"
+          id="modalClose"
+          aria-label="Close artist dialog"
+        >
+          &times;
+        </button>
+        <h3 id="artistModalTitle" class="mt-8"></h3>
+        <p id="artistModalBody" class="mt-8"></p>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="app.js" defer></script>
+  </body>
+</html>
