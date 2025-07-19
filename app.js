@@ -213,8 +213,182 @@ const appData = {
   ]
 };
 
+// Structured event data for calendar links
+const eventsCalendarData = [
+  {
+    id: 'splash-watercolor',
+    title: 'Splash of Watercolor Exhibit',
+    start: '2025-07-01',
+    end: '2025-07-30',
+    allDay: true,
+    location: 'Kokomo Art Center, 525 W Ricketts St',
+    description:
+      'Delicately beautiful watercolor artworks by Jennie Moore, Judy Arthur, Cissie Seidman, and Dixie Bennett.'
+  },
+  {
+    id: 'guest-artist-bass',
+    title: 'Guest Artist Reception: Brandon C. Bass',
+    start: '2025-07-12T12:00:00',
+    end: '2025-07-12T15:00:00',
+    location: 'Artworks Gallery, 210 N Main St',
+    description:
+      'Free reception featuring portraits, military subjects, pets & landscapes by Brandon C. Bass. Light refreshments provided.'
+  },
+  {
+    id: 'first-friday-aug',
+    title: "First Friday 'Get Schooled!'",
+    start: '2025-08-01T17:30:00',
+    end: '2025-08-01T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Back-to-school themed art demos and activities. KAA hosts open house in Artworks Gallery.'
+  },
+  {
+    id: 'first-friday-sep',
+    title: "First Friday 'Art Walk'",
+    start: '2025-09-05T17:30:00',
+    end: '2025-09-05T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Monthly arts-driven street festival with gallery programming and community art activities.'
+  },
+  {
+    id: 'first-friday-oct',
+    title: "First Friday 'Masquerade'",
+    start: '2025-10-03T17:30:00',
+    end: '2025-10-03T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Halloween-themed First Friday with masquerade activities and special gallery exhibitions.'
+  },
+  {
+    id: 'first-friday-nov',
+    title: "First Friday 'Shop & Stroll'",
+    start: '2025-11-07T17:30:00',
+    end: '2025-11-07T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Holiday shopping-themed First Friday with local artists showcasing gift-worthy works.'
+  },
+  {
+    id: 'holiday-bazaar',
+    title: 'Holiday Bazaar',
+    start: '2025-11-01',
+    end: '2025-12-23',
+    allDay: true,
+    location: 'Artworks Gallery, 210 N Main St',
+    description:
+      'Extended holiday market featuring local artists and craftspeople. Open Mon-Sat 12-4 PM with extended hours on First Fridays.'
+  },
+  {
+    id: 'first-friday-dec',
+    title: "First Friday 'Ugly Sweater'",
+    start: '2025-12-05T17:30:00',
+    end: '2025-12-05T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Holiday-themed First Friday with ugly sweater contest and festive art activities.'
+  },
+  {
+    id: 'spring-art-show',
+    title: '97th Annual Spring Art Show',
+    start: '2025-05-22',
+    end: '2025-06-01',
+    allDay: true,
+    location: 'Kokomo Art Center, 525 W Ricketts St',
+    description:
+      'Annual juried showcase featuring the best of local and regional artists. Closing reception June 1 at 2 PM.'
+  },
+  {
+    id: 'recycled-art-show',
+    title: 'Recycled Art Show',
+    start: '2025-03-07',
+    end: '2025-04-25',
+    allDay: true,
+    location: 'Artworks Gallery, 210 N Main St',
+    description:
+      'Juried exhibition featuring works created with 80% or more recycled materials. Awards reception April 4.'
+  },
+  {
+    id: 'junk-journal-workshop',
+    title: 'Junk Journal Workshop',
+    start: '2025-03-15T12:00:00',
+    end: '2025-03-15T16:00:00',
+    location: 'Artworks Gallery, 210 N Main St',
+    description:
+      'Create a handmade journal using recycled materials. Instructor: Vivian Bennett. Fee: $62.50 including materials. Limited seats available.'
+  },
+  {
+    id: 'photo-show',
+    title: '2025 Photo Show',
+    start: '2025-03-05',
+    end: '2025-03-29',
+    allDay: true,
+    location: 'Kokomo Art Center, 525 W Ricketts St',
+    description:
+      'Community photography exhibition showcasing the talent of local photographers.'
+  },
+  {
+    id: 'circus-exhibit',
+    title: 'Circus Is Coming to Town',
+    start: '2025-05-02',
+    end: '2025-06-27',
+    allDay: true,
+    location: 'Kokomo Art Center, 525 W Ricketts St',
+    description:
+      'Partnership exhibition with the International Circus Museum featuring circus-themed artworks and silent auction items.'
+  }
+];
+
+function formatICSDate(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+}
+
+function generateICS(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const description = (event.description || '').replace(/\n/g, '\\n');
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'BEGIN:VEVENT',
+    `SUMMARY:${event.title}`,
+    `DESCRIPTION:${description}`,
+    `LOCATION:${event.location || ''}`,
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\n');
+}
+
+function generateGoogleCalendarLink(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: event.title,
+    dates: `${start}/${end}`,
+    details: event.description || '',
+    location: event.location || '',
+    sf: 'true',
+    output: 'xml'
+  });
+  return `https://www.google.com/calendar/render?${params.toString()}`;
+}
+
+function addCalendarLinks(eventInfo) {
+  const eventData = eventsCalendarData.find(e => e.title === eventInfo.title);
+  if (!eventData) return '';
+  const googleUrl = generateGoogleCalendarLink(eventData);
+  const icsData = generateICS(eventData);
+  const icsHref = `data:text/calendar;charset=utf8,${encodeURIComponent(icsData)}`;
+  return `<div class="calendar-links">Add to calendar: <a href="${googleUrl}" target="_blank" rel="noopener" class="btn btn--sm btn--primary">Google</a> <a href="${icsHref}" download="event.ics" class="btn btn--sm btn--outline">ICS</a></div>`;
+}
+
 // DOM elements
 let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody, navContent;
+let eventsViewBtn, calendarViewBtn, eventsGrid, eventsCalendar;
 let lastFocusedElement = null;
 let isScrolling = false;
 let navScrollTimeout = null;
@@ -256,6 +430,10 @@ function initializeElements() {
   modalTitle = document.getElementById('modalTitle');
   modalBody = document.getElementById('modalBody');
   navContent = navOverlay ? navOverlay.querySelector('.nav-overlay-content') : null;
+  eventsViewBtn = document.getElementById('eventsViewBtn');
+  calendarViewBtn = document.getElementById('calendarViewBtn');
+  eventsGrid = document.getElementById('eventsGrid');
+  eventsCalendar = document.getElementById('eventsCalendar');
   
   console.log('📋 Element status:', {
     hamburger: hamburger ? '✅' : '❌',
@@ -265,7 +443,11 @@ function initializeElements() {
     modalClose: modalClose ? '✅' : '❌',
     modalTitle: modalTitle ? '✅' : '❌',
     modalBody: modalBody ? '✅' : '❌',
-    navContent: navContent ? '✅' : '❌'
+    navContent: navContent ? '✅' : '❌',
+    eventsViewBtn: eventsViewBtn ? '✅' : '❌',
+    calendarViewBtn: calendarViewBtn ? '✅' : '❌',
+    eventsGrid: eventsGrid ? '✅' : '❌',
+    eventsCalendar: eventsCalendar ? '✅' : '❌'
   });
   
   // Ensure modal is hidden initially
@@ -437,6 +619,7 @@ function populateContent() {
     populateClasses();
     populateMembership();
     populateEvents();
+    initializeEventsToggle();
     populateSponsors();
     console.log('✅ All content populated successfully');
   } catch (error) {
@@ -647,12 +830,42 @@ function populateEvents() {
         <p>${event.description}</p>
         ${event.details ? `<p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">${event.details}</p>` : ''}
         <a href="mailto:${appData.contact.email}?subject=Event%20Information%20-%20${encodeURIComponent(event.title)}" class="btn btn--outline mt-8">Learn More</a>
+        ${addCalendarLinks(event)}
       </div>
     `;
     eventsGrid.appendChild(eventCard);
   });
   
   console.log('✅ Events populated');
+}
+
+function initializeEventsToggle() {
+  if (!eventsViewBtn || !calendarViewBtn || !eventsGrid || !eventsCalendar) {
+    return;
+  }
+
+  eventsViewBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    eventsViewBtn.classList.add('btn--primary', 'active');
+    eventsViewBtn.classList.remove('btn--outline');
+    calendarViewBtn.classList.remove('btn--primary', 'active');
+    calendarViewBtn.classList.add('btn--outline');
+    eventsGrid.classList.remove('hidden');
+    eventsCalendar.classList.add('hidden');
+  });
+
+  calendarViewBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    calendarViewBtn.classList.add('btn--primary', 'active');
+    calendarViewBtn.classList.remove('btn--outline');
+    eventsViewBtn.classList.remove('btn--primary', 'active');
+    eventsViewBtn.classList.add('btn--outline');
+    eventsGrid.classList.add('hidden');
+    eventsCalendar.classList.remove('hidden');
+  });
+
+  // Default to events view
+  eventsViewBtn.click();
 }
 
 // Populate sponsors
