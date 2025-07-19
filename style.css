@@ -144,6 +144,27 @@
   --container-xl: 1280px;
 }
 
+/* Footer Sponsor Logos */
+.footer-sponsors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-top: var(--space-8);
+}
+
+.footer-sponsors img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .footer-sponsors img {
+    max-width: 90px;
+  }
+}
+
 /* Dark mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
