@@ -1,189 +1,202 @@
-// Application data from JSON
+// Application data from provided JSON
 const appData = {
-  kaa_info: {
-    name: "Kokomo Art Association",
-    founded: 1926,
-    mission: "To bring art to the community and bring the community to art.",
-    contact: "media@kaaonline.org",
-    venues: [
-      {
-        name: "Kokomo Art Center",
-        address: "525 W. Ricketts Street, Kokomo, IN 46902",
-        phone: "(765) 457-9480",
-        hours: "Tuesday-Saturday 1pm-4pm"
-      },
-      {
-        name: "Artworks Gallery", 
-        address: "210 N. Main Street, Kokomo, IN 46901",
-        phone: "(765) 459-4579",
-        hours: "Monday-Friday 12pm-4pm Saturday 11pm-3pm"
-
-      },
-      {
-        name: "Artist Alley",
-        description: "Dynamic outdoor venue showcasing rotating public art"
-      }
-    ]
+  siteName: "Kokomo Art Association",
+  tagline: "Bringing ART to the Community",
+  mission: "Since 1926, the Kokomo Art Association has championed the goal of bringing art to the community by bringing the community to art.",
+  contact: {
+    email: "media@kaaonline.org"
   },
+  venues: [
+    {
+      name: "Artworks Gallery",
+      address: "210 N Main Street, Kokomo, IN 46901",
+      phone: "(765) 459-4579",
+      hours: "Mon-Fri 12:00PM-4:00PM, Sat 11:00AM-3:00PM"
+    },
+    {
+      name: "Kokomo Art Center", 
+      address: "525 W Ricketts Street, Kokomo, IN 46902",
+      phone: "(765) 457-9480",
+      hours: "Tue-Sat 1:00PM-4:00PM"
+    }
+  ],
   artists: [
-    "MARILYN ALEMAN", "SHELLEY WILDER", "SARA MCCUBBIN", "DON WILKA", "DIXIE BEN-NET", "STEVE CREIGHTON", "LISA ANANICH FREELAND", "LESLEY WYSONG", "MARK HOBSON", "PEGGY HOBSON", "CORINNE MCAULEY", "ANGELA WALTHOUR", "RAMONA DANIELS", "MICHAEL HICKEY", "CHERYL SULLIVAN", "MARITA BARBER", "TAMMY ROE", "PATRICK REDMON", "ALOVEA CHADWELL", "JAN STIEGLITZ", "VIVIAN BENNETT", "KAT CLOWARD", "LANA KIRTLEY", "BERTIE DAVID", "KAREN GARDNER", "KEN GARDNER", "AVON WATERS"
+    "MARILYN ALEMAN", "SHELLEY WILDER", "SARA MCCUBBIN", "DON WILKA", "DIXIE BEN-NET", 
+    "STEVE CREIGHTON", "LISA ANANICH FREELAND", "LESLEY WYSONG", "MARK HOBSON", 
+    "PEGGY HOBSON", "CORINNE MCAULEY", "ANGELA WALTHOUR", "RAMONA DANIELS", 
+    "MICHAEL HICKEY", "CHERYL SULLIVAN", "MARITA BARBER", "TAMMY ROE", "PATRICK REDMON", 
+    "ALOVEA CHADWELL", "JAN STIEGLITZ", "VIVIAN BENNETT", "KAT CLOWARD", "LANA KIRTLEY", 
+    "BERTIE DAVID", "KAREN GARDNER", "KEN GARDNER", "AVON WATERS"
   ],
   classes: [
     {
-      name: "Watercolor Classes",
-      description: "Explore the fluid beauty of watercolor painting with expert instruction.",
-      instructor: "Various Artists"
+      name: "Watercolor Techniques",
+      instructor: "DIXIE BEN-NET",
+      description: "Learn fundamental and advanced watercolor painting techniques in a supportive environment."
     },
     {
-      name: "Zentangle® Classes", 
-      description: "Learn the meditative art of Zentangle® with certified instructor Don Wilka.",
-      instructor: "Don Wilka",
-      email: "drwilka@gmail.com"
+      name: "Zentangle® Basics & Beyond",
+      instructor: "DON WILKA",
+      fee: "$35 per class",
+      description: "Certified Zentangle Teacher offers relaxing, meditative art creation. Ages 8+ with adult."
     },
     {
       name: "Junk Journaling",
-      description: "Transform everyday materials into beautiful art journals and mixed media pieces."
+      instructor: "VIVIAN BENNETT",
+      description: "Create handmade journals using recycled and repurposed materials."
     },
     {
-      name: "Oil Painting Workshop",
-      description: "Master traditional oil painting techniques in a supportive environment."
+      name: "Digital Photography",
+      instructor: "BOB DAWSON",
+      description: "Learn fundamentals of digital photography and composition."
     },
     {
-      name: "Acrylic Painting",
-      description: "Discover the versatility of acrylic paints in this hands-on workshop."
+      name: "Pastels",
+      instructor: "AVON WATERS",
+      description: "Explore the vibrant world of pastel painting techniques."
     },
     {
-      name: "Drawing Fundamentals",
-      description: "Build essential drawing skills with pencil, charcoal, and mixed media."
+      name: "Drawing & Painting",
+      instructor: "MARILYN ALEMAN",
+      description: "Foundational skills in drawing and painting for all levels."
     },
     {
-      name: "Mixed Media Art",
-      description: "Combine various materials and techniques to create unique artistic expressions."
+      name: "Sip & Paint Parties",
+      instructor: "RAMONA DANIELS",
+      description: "Relaxed social painting sessions perfect for beginners."
     },
     {
-      name: "Pottery & Ceramics",
-      description: "Work with clay to create functional and decorative ceramic pieces."
-    },
-    {
-      name: "Digital Art Workshop",
-      description: "Explore digital art creation using modern software and techniques."
-    }
-  ],
-  membership_levels: [
-    {
-      name: "Student",
-      fee: "$15",
-      benefits: ["Display and sell art commission-free during First Fridays", "20% commission on Holiday Show sales", "Artist listing on KAA website", "Workshop discounts"]
-    },
-    {
-      name: "Individual", 
-      fee: "$29",
-      benefits: ["Display and sell art commission-free during First Fridays", "20% commission on Holiday Show sales", "Artist listing on KAA website", "Workshop discounts"]
-    },
-    {
-      name: "Business",
-      fee: "$99", 
-      benefits: ["Business listing on KAA website", "10% discount on gallery rentals", "First Friday advertising opportunities", "Monthly KAA Newsletter"]
-    },
-    {
-      name: "Friends of Art",
-      fee: "$500",
-      benefits: ["All Business benefits", "Enhanced sponsor listing for one year", "20% discount on gallery rentals"]
-    },
-    {
-      name: "Corporate Sponsor",
-      fee: "$1,000",
-      benefits: ["All Business benefits", "Logo in monthly newsletter for one year", "30% discount on gallery rentals"]
-    },
-    {
-      name: "Golden Palette Sponsor",
-      fee: "$1,500", 
-      benefits: ["All Corporate Sponsor benefits", "One free 4-hour gallery rental per year"]
+      name: "Pottery",
+      instructor: "MARILYN ALEMAN", 
+      description: "Hand-building and wheel throwing ceramic techniques."
     }
   ],
   events: [
     {
-      name: "Splash of Watercolor Exhibition",
-      description: "Current exhibition featuring watercolor works by local artists",
-      status: "Current"
+      title: "Recycled Art Show",
+      dates: "March 7 - April 25, 2025",
+      venue: "Artworks Gallery",
+      description: "Juried show featuring artwork made with 80% recycled materials. Receptions March 7 & April 4.",
+      details: "70/30 commission split (75/25 for members). Art delivery March 1, pickup April 26."
     },
     {
-      name: "Holiday Bazaar 2025",
-      description: "Annual holiday shopping event featuring handmade art and crafts",
-      date: "December 2025"
+      title: "Junk Journal Workshop", 
+      date: "March 15, 2025",
+      time: "12:00PM - 4:00PM",
+      venue: "Artworks Gallery",
+      instructor: "VIVIAN BENNETT",
+      fee: "$62.50 (includes materials)",
+      description: "Create handmade journals using recycled materials. Limited spots, registration required."
     },
     {
-      name: "Photo Show 2025", 
-      description: "Photography exhibition showcasing local photographers",
-      date: "Spring 2025"
-    },
-    {
-      name: "Recycled Art Show 2025",
-      description: "Creative works made from recycled and repurposed materials",
-      date: "Earth Day 2025"
-    },
-    {
-      name: "Paper Cutting Workshop",
-      description: "Learn traditional paper cutting techniques and create intricate designs"
-    },
-    {
-      name: "Trash to Treasure Workshop", 
-      description: "Transform discarded materials into beautiful art pieces"
+      title: "97th Annual Spring Art Show",
+      dates: "Late May - June 1, 2025", 
+      venue: "Kokomo Art Center",
+      hours: "Tue-Sat 1:00PM-4:00PM",
+      description: "Annual juried exhibition featuring local and regional artists. Closing reception June 1 at 2:00PM."
     }
   ],
- 
-  timeline: [
-    {year: "1926", event: "Kokomo Art Association founded by local artists and patrons"},
-    {year: "1930s-1940s", event: "Early exhibits held in community halls and borrowed storefronts"},
-    {year: "1950s", event: "KAA establishes permanent home with first gallery space in downtown Kokomo"},
-    {year: "1975", event: "Kokomo Art Center opens as central hub for workshops and exhibitions"},
-    {year: "1995", event: "Artworks Gallery launches, expanding display opportunities"},
-    {year: "2010", event: "Artist Alley created as dynamic outdoor venue for public art"},
-    {year: "Today", event: "KAA serves as gathering place for artists, families, students, and supporters"}
+  membership: [
+    {
+      level: "Student",
+      fee: "$15",
+      benefits: ["Commission-free First Friday sales", "Website artist listing", "Workshop discounts"]
+    },
+    {
+      level: "Individual", 
+      fee: "$29",
+      benefits: ["Commission-free First Friday sales", "Website artist listing", "Workshop discounts", "Newsletter subscription"]
+    },
+    {
+      level: "Business",
+      fee: "$99", 
+      benefits: ["Business website listing", "10% gallery rental discount", "First Friday advertising", "Newsletter subscription"]
+    },
+    {
+      level: "Friends of Art",
+      fee: "$500",
+      benefits: ["Enhanced website sponsor listing", "20% gallery rental discount", "All Business benefits"]
+    },
+    {
+      level: "Corporate Sponsor",
+      fee: "$1,000",
+      benefits: ["Company logo in newsletter", "30% gallery rental discount", "All previous benefits"]
+    },
+    {
+      level: "Golden Palette Sponsor", 
+      fee: "$1,500",
+      benefits: ["One free 4-hour gallery rental annually", "All Corporate Sponsor benefits"]
+    }
+  ],
+  sponsorship: [
+    {
+      tier: "Gallery Patron",
+      investment: "$250+",
+      benefits: ["Name listed on Thank You page", "Social media recognition"]
+    },
+    {
+      tier: "Exhibition Sponsor",
+      investment: "$500+", 
+      benefits: ["Logo on exhibition marketing", "Homepage logo during exhibition", "All Gallery Patron benefits"]
+    },
+    {
+      tier: "Season Partner",
+      investment: "$1,000+",
+      benefits: ["Homepage logo for entire year", "Featured social media posts", "Press release inclusion", "All previous benefits"]
+    }
   ]
 };
 
 // DOM elements
-let menuToggle, navOverlay, navClose, modal, modalClose, modalTitle, modalBody;
+let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody;
 let lastFocusedElement = null;
 let isScrolling = false;
 
-// Initialize application
+// Initialize application when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-  // Wait a moment for DOM to be fully ready
+  console.log('DOM Content Loaded - Initializing KAA website...');
+  
+  // Wait a moment for all elements to be available
   setTimeout(() => {
-    initializeElements();
-    initializeNavigation();
-    populateContent();
-    initializeScrollAnimations();
-    initializeParallax();
-    initializeModal();
-    initializeAccordion();
-    initializeContactForm();
-    initializeKeyboardNavigation();
-    initializeHeaderScrollEffect();
-    initializeSmoothScroll();
-    
-    // Remove loading state
-    document.body.classList.remove('loading');
-  }, 100);
+    try {
+      initializeElements();
+      initializeNavigation(); 
+      populateContent();
+      initializeScrollAnimations();
+      initializeParallax();
+      initializeModal();
+      initializeAccordion();
+      initializeContactForm();
+      initializeKeyboardNavigation();
+      initializeSmoothScroll();
+      
+      console.log('✅ Kokomo Art Association website fully initialized');
+    } catch (error) {
+      console.error('❌ Error during initialization:', error);
+    }
+  }, 200);
 });
 
-// Initialize DOM elements
+// Initialize DOM elements with error checking
 function initializeElements() {
-  menuToggle = document.getElementById('menuToggle');
+  console.log('🔍 Finding DOM elements...');
+  
+  hamburger = document.getElementById('hamburger');
   navOverlay = document.getElementById('navOverlay');
   navClose = document.getElementById('navClose');
   modal = document.getElementById('artistModal');
   modalClose = document.getElementById('modalClose');
-  modalTitle = document.getElementById('artistModalTitle');
-  modalBody = document.getElementById('artistModalBody');
+  modalTitle = document.getElementById('modalTitle');
+  modalBody = document.getElementById('modalBody');
   
-  console.log('Elements initialized:', {
-    menuToggle: !!menuToggle,
-    navOverlay: !!navOverlay,
-    navClose: !!navClose,
-    modal: !!modal
+  console.log('📋 Element status:', {
+    hamburger: hamburger ? '✅' : '❌',
+    navOverlay: navOverlay ? '✅' : '❌',
+    navClose: navClose ? '✅' : '❌',
+    modal: modal ? '✅' : '❌',
+    modalClose: modalClose ? '✅' : '❌',
+    modalTitle: modalTitle ? '✅' : '❌',
+    modalBody: modalBody ? '✅' : '❌'
   });
   
   // Ensure modal is hidden initially
@@ -194,40 +207,41 @@ function initializeElements() {
   }
 }
 
-// Navigation functionality
+// Navigation functionality with improved error handling
 function initializeNavigation() {
-  console.log('Initializing navigation...');
+  console.log('🧭 Initializing navigation...');
   
-  // Menu toggle functionality
-  if (menuToggle) {
-    console.log('Adding click listener to menu toggle');
-    menuToggle.addEventListener('click', function(e) {
-      console.log('Menu toggle clicked');
+  if (hamburger) {
+    console.log('🍔 Adding hamburger menu listener');
+    hamburger.addEventListener('click', function(e) {
+      console.log('🍔 Hamburger clicked!');
       e.preventDefault();
       e.stopPropagation();
       toggleNavOverlay();
     });
   } else {
-    console.error('Menu toggle not found');
+    console.error('❌ Hamburger menu element not found');
   }
   
-  // Close navigation
   if (navClose) {
+    console.log('✖️ Adding nav close listener');
     navClose.addEventListener('click', function(e) {
-      console.log('Nav close clicked');
+      console.log('✖️ Nav close clicked!');
       e.preventDefault();
       e.stopPropagation();
       closeNavOverlay();
     });
+  } else {
+    console.error('❌ Nav close element not found');
   }
   
   // Navigation links
-  const navLinks = document.querySelectorAll('.nav-overlay__list a');
-  console.log('Found nav links:', navLinks.length);
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  console.log(`🔗 Found ${navLinks.length} navigation links`);
   
-  navLinks.forEach(link => {
+  navLinks.forEach((link, index) => {
     link.addEventListener('click', function(e) {
-      console.log('Nav link clicked:', this.getAttribute('href'));
+      console.log(`🔗 Nav link ${index + 1} clicked:`, this.getAttribute('href'));
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
       const targetElement = document.getElementById(targetId);
@@ -235,15 +249,16 @@ function initializeNavigation() {
       if (targetElement) {
         closeNavOverlay();
         
-        // Smooth scroll to target with offset for fixed header
-        const headerOffset = 80;
-        const elementPosition = targetElement.offsetTop;
-        const offsetPosition = elementPosition - headerOffset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        setTimeout(() => {
+          const headerOffset = 80;
+          const elementPosition = targetElement.offsetTop;
+          const offsetPosition = elementPosition - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 300);
       }
     });
   });
@@ -252,6 +267,7 @@ function initializeNavigation() {
   if (navOverlay) {
     navOverlay.addEventListener('click', function(e) {
       if (e.target === navOverlay) {
+        console.log('🎯 Clicked outside nav overlay - closing');
         closeNavOverlay();
       }
     });
@@ -260,15 +276,15 @@ function initializeNavigation() {
 
 // Toggle navigation overlay
 function toggleNavOverlay() {
-  console.log('Toggling nav overlay');
+  console.log('🔄 Toggling navigation overlay...');
   
-  if (!navOverlay || !menuToggle) {
-    console.error('Navigation elements not found');
+  if (!navOverlay || !hamburger) {
+    console.error('❌ Navigation elements missing');
     return;
   }
   
   const isActive = navOverlay.classList.contains('active');
-  console.log('Nav overlay is active:', isActive);
+  console.log('📊 Nav overlay currently active:', isActive);
   
   if (isActive) {
     closeNavOverlay();
@@ -279,108 +295,117 @@ function toggleNavOverlay() {
 
 // Open navigation overlay
 function openNavOverlay() {
-  console.log('Opening nav overlay');
+  console.log('🚀 Opening navigation overlay...');
   
-  if (!navOverlay || !menuToggle) {
-    console.error('Navigation elements not found');
+  if (!navOverlay || !hamburger) {
+    console.error('❌ Cannot open - elements missing');
     return;
   }
   
   navOverlay.classList.add('active');
   navOverlay.removeAttribute('hidden');
   navOverlay.setAttribute('aria-hidden', 'false');
-  menuToggle.classList.add('active');
-  menuToggle.setAttribute('aria-expanded', 'true');
+  hamburger.classList.add('active');
+  hamburger.setAttribute('aria-expanded', 'true');
   
-  // Prevent body scroll
   document.body.style.overflow = 'hidden';
   
-  // Focus management
   if (navClose) {
     setTimeout(() => {
       navClose.focus();
     }, 300);
   }
+  
+  console.log('✅ Navigation overlay opened');
 }
 
 // Close navigation overlay
 function closeNavOverlay() {
-  console.log('Closing nav overlay');
+  console.log('🚪 Closing navigation overlay...');
   
-  if (!navOverlay || !menuToggle) {
-    console.error('Navigation elements not found');
+  if (!navOverlay || !hamburger) {
+    console.error('❌ Cannot close - elements missing');
     return;
   }
   
   navOverlay.classList.remove('active');
   navOverlay.setAttribute('hidden', '');
   navOverlay.setAttribute('aria-hidden', 'true');
-  menuToggle.classList.remove('active');
-  menuToggle.setAttribute('aria-expanded', 'false');
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
   
-  // Restore body scroll
   document.body.style.overflow = 'auto';
+  
+  console.log('✅ Navigation overlay closed');
 }
 
 // Populate content from data
 function populateContent() {
-  console.log('Populating content...');
-  populateTimeline();
-  populateGalleries();
-  populateArtists();
-  populateClasses();
-  populateMembership();
-  populateEvents();
-  populateSponsors();
-}
-
-// Populate timeline
-function populateTimeline() {
-  const timelineContainer = document.getElementById('timeline');
-  if (!timelineContainer) return;
+  console.log('🎨 Populating content...');
   
-  appData.timeline.forEach((item, index) => {
-    const timelineItem = document.createElement('li');
-    timelineItem.className = 'timeline-item';
-    timelineItem.innerHTML = `
-      <div class="timeline-year">${item.year}</div>
-      <div class="timeline-event">${item.event}</div>
-    `;
-    
-    // Add staggered animation delay
-    timelineItem.style.animationDelay = `${index * 0.1}s`;
-    
-    timelineContainer.appendChild(timelineItem);
-  });
+  try {
+    populateGalleries();
+    populateArtists();
+    populateClasses();
+    populateMembership();
+    populateEvents();
+    populateSponsors();
+    console.log('✅ All content populated successfully');
+  } catch (error) {
+    console.error('❌ Error populating content:', error);
+  }
 }
 
 // Populate galleries
 function populateGalleries() {
   const galleriesGrid = document.getElementById('galleriesGrid');
-  if (!galleriesGrid) return;
+  if (!galleriesGrid) {
+    console.error('❌ Galleries grid not found');
+    return;
+  }
   
-  appData.kaa_info.venues.forEach(venue => {
+  console.log('🏛️ Populating galleries...');
+  
+  appData.venues.forEach(venue => {
     const galleryCard = document.createElement('div');
     galleryCard.className = 'card';
     galleryCard.innerHTML = `
       <div class="card__body">
         <h3>${venue.name}</h3>
-        ${venue.address ? `<p><strong>Address:</strong> ${venue.address}</p>` : ''}
-        ${venue.phone ? `<p><strong>Phone:</strong> ${venue.phone}</p>` : ''}
-        ${venue.hours ? `<p><strong>Hours:</strong> ${venue.hours}</p>` : ''}
-        ${venue.description ? `<p>${venue.description}</p>` : ''}
+        <p><strong>Address:</strong> ${venue.address}</p>
+        <p><strong>Phone:</strong> ${venue.phone}</p>
+        <p><strong>Hours:</strong> ${venue.hours}</p>
+        <a href="mailto:${appData.contact.email}?subject=Gallery%20Information%20-%20${encodeURIComponent(venue.name)}" class="btn btn--outline mt-8">Get Directions</a>
       </div>
     `;
     galleriesGrid.appendChild(galleryCard);
   });
+
+  // Add Artist Alley card
+  const artistAlleyCard = document.createElement('div');
+  artistAlleyCard.className = 'card';
+  artistAlleyCard.innerHTML = `
+    <div class="card__body">
+      <h3>Artist Alley</h3>
+      <p>Dynamic outdoor venue showcasing rotating public art installations throughout the community.</p>
+      <p><strong>Features:</strong> Rotating exhibitions, community accessible art displays</p>
+      <a href="mailto:${appData.contact.email}?subject=Artist%20Alley%20Information" class="btn btn--outline mt-8">Learn More</a>
+    </div>
+  `;
+  galleriesGrid.appendChild(artistAlleyCard);
+  
+  console.log('✅ Galleries populated');
 }
 
-// Populate artists
+// Populate artists with improved event handling
 function populateArtists() {
   const artistsGrid = document.getElementById('artistsGrid');
-  if (!artistsGrid) return;
+  if (!artistsGrid) {
+    console.error('❌ Artists grid not found');
+    return;
+  }
   
-  console.log('Populating artists...');
+  console.log('👨‍🎨 Populating artists...');
   
   appData.artists.forEach((artist, index) => {
     const artistCard = document.createElement('div');
@@ -398,42 +423,38 @@ function populateArtists() {
     artistCard.setAttribute('aria-label', `Learn more about ${artist}`);
     artistCard.style.cursor = 'pointer';
     
-    artistsGrid.appendChild(artistCard);
-  });
-  
-  // Add event listeners after all cards are created
-  setTimeout(() => {
-    const artistCards = document.querySelectorAll('.artist-card');
-    console.log('Found artist cards:', artistCards.length);
+    // Add click event listener immediately
+    artistCard.addEventListener('click', function(e) {
+      console.log('🎨 Artist card clicked:', artist);
+      e.preventDefault();
+      e.stopPropagation();
+      openArtistModal(artist);
+    });
     
-    artistCards.forEach(card => {
-      const artist = card.getAttribute('data-artist');
-      
-      card.addEventListener('click', function(e) {
-        console.log('Artist card clicked:', artist);
+    artistCard.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        console.log('⌨️ Artist card key pressed:', artist);
         e.preventDefault();
         e.stopPropagation();
         openArtistModal(artist);
-      });
-      
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          console.log('Artist card key pressed:', artist);
-          e.preventDefault();
-          e.stopPropagation();
-          openArtistModal(artist);
-        }
-      });
+      }
     });
-  }, 100);
+    
+    artistsGrid.appendChild(artistCard);
+  });
+  
+  console.log(`✅ ${appData.artists.length} artists populated with click handlers`);
 }
 
-// Populate classes
+// Populate classes with immediate event handling
 function populateClasses() {
-  const classesList = document.getElementById('classesList');
-  if (!classesList) return;
+  const classesAccordion = document.getElementById('classesAccordion');
+  if (!classesAccordion) {
+    console.error('❌ Classes accordion not found');
+    return;
+  }
   
-  console.log('Populating classes...');
+  console.log('📚 Populating classes...');
   
   appData.classes.forEach((classData, index) => {
     const classItem = document.createElement('div');
@@ -442,96 +463,150 @@ function populateClasses() {
       <div class="class-header" role="button" tabindex="0" aria-expanded="false" aria-controls="class-content-${index}" data-class-index="${index}">
         <div>
           <h3>${classData.name}</h3>
-          ${classData.instructor ? `<div class="class-instructor">with ${classData.instructor}</div>` : ''}
+          <div class="class-instructor">with ${classData.instructor}</div>
+          ${classData.fee ? `<div style="color: var(--color-primary); font-size: var(--font-size-sm); margin-top: 4px;">${classData.fee}</div>` : ''}
         </div>
         <div class="class-toggle">+</div>
       </div>
       <div id="class-content-${index}" class="class-content" role="region" aria-labelledby="class-header-${index}">
         <p>${classData.description}</p>
-        ${classData.email ? `<p><strong>Contact:</strong> <a href="mailto:${classData.email}">${classData.email}</a></p>` : ''}
-        <a href="mailto:media@kaaonline.org?subject=Class%20Registration%20-%20${encodeURIComponent(classData.name)}" class="btn btn--primary mt-8">Register for Class</a>
+        <a href="mailto:${appData.contact.email}?subject=Class%20Registration%20-%20${encodeURIComponent(classData.name)}" class="btn btn--primary mt-8">Register for Class</a>
       </div>
     `;
     
-    classesList.appendChild(classItem);
+    // Add event listeners immediately after creating the element
+    const header = classItem.querySelector('.class-header');
+    if (header) {
+      header.addEventListener('click', function(e) {
+        console.log('📚 Class header clicked:', classData.name);
+        e.preventDefault();
+        e.stopPropagation();
+        toggleAccordion(header);
+      });
+      
+      header.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          console.log('⌨️ Class header key pressed:', classData.name);
+          e.preventDefault();
+          e.stopPropagation();
+          toggleAccordion(header);
+        }
+      });
+    }
+    
+    classesAccordion.appendChild(classItem);
   });
+  
+  console.log(`✅ ${appData.classes.length} classes populated with accordion handlers`);
 }
 
 // Populate membership
 function populateMembership() {
   const membershipGrid = document.getElementById('membershipGrid');
-  if (!membershipGrid) return;
+  if (!membershipGrid) {
+    console.error('❌ Membership grid not found');
+    return;
+  }
   
-  appData.membership_levels.forEach(level => {
+  console.log('💳 Populating membership...');
+  
+  appData.membership.forEach(level => {
     const membershipCard = document.createElement('div');
     membershipCard.className = 'membership-card card';
     membershipCard.innerHTML = `
       <div class="card__body">
-        <h3>${level.name}</h3>
+        <h3>${level.level}</h3>
         <div class="membership-price">${level.fee}</div>
         <ul class="membership-benefits">
           ${level.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
         </ul>
-        <a href="mailto:media@kaaonline.org?subject=Membership%20Inquiry%20-%20${encodeURIComponent(level.name)}" class="btn btn--primary">Join Now</a>
+        <a href="mailto:${appData.contact.email}?subject=Membership%20Inquiry%20-%20${encodeURIComponent(level.level)}" class="btn btn--primary">Join Now</a>
       </div>
     `;
     membershipGrid.appendChild(membershipCard);
   });
+  
+  console.log('✅ Membership populated');
 }
 
 // Populate events
 function populateEvents() {
   const eventsGrid = document.getElementById('eventsGrid');
-  if (!eventsGrid) return;
+  if (!eventsGrid) {
+    console.error('❌ Events grid not found');
+    return;
+  }
+  
+  console.log('🎪 Populating events...');
   
   appData.events.forEach(event => {
     const eventCard = document.createElement('div');
     eventCard.className = 'card';
+    
+    let dateInfo = '';
+    if (event.dates) dateInfo = `<p style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-8);">${event.dates}</p>`;
+    if (event.date) dateInfo = `<p style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-8);">${event.date}</p>`;
+    if (event.time) dateInfo += `<p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-8);">${event.time}</p>`;
+    
     eventCard.innerHTML = `
       <div class="card__body">
-        <h3>${event.name}</h3>
-        ${event.date ? `<p class="event-date" style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-8);">${event.date}</p>` : ''}
-        ${event.status ? `<p class="event-status" style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--space-8);">${event.status}</p>` : ''}
+        <h3>${event.title}</h3>
+        ${dateInfo}
+        ${event.venue ? `<p><strong>Venue:</strong> ${event.venue}</p>` : ''}
+        ${event.instructor ? `<p><strong>Instructor:</strong> ${event.instructor}</p>` : ''}
+        ${event.fee ? `<p><strong>Fee:</strong> ${event.fee}</p>` : ''}
+        ${event.hours ? `<p><strong>Hours:</strong> ${event.hours}</p>` : ''}
         <p>${event.description}</p>
+        ${event.details ? `<p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">${event.details}</p>` : ''}
+        <a href="mailto:${appData.contact.email}?subject=Event%20Information%20-%20${encodeURIComponent(event.title)}" class="btn btn--outline mt-8">Learn More</a>
       </div>
     `;
     eventsGrid.appendChild(eventCard);
   });
+  
+  console.log('✅ Events populated');
 }
 
 // Populate sponsors
 function populateSponsors() {
   const sponsorsGrid = document.getElementById('sponsorsGrid');
-  if (!sponsorsGrid) return;
+  if (!sponsorsGrid) {
+    console.error('❌ Sponsors grid not found');
+    return;
+  }
   
-  appData.sponsor_tiers.forEach(tier => {
+  console.log('🤝 Populating sponsors...');
+  
+  appData.sponsorship.forEach(tier => {
     const sponsorCard = document.createElement('div');
     sponsorCard.className = 'card';
     sponsorCard.innerHTML = `
       <div class="card__body">
-        <h3>${tier.name}</h3>
-        <div class="sponsor-investment" style="color: var(--color-primary); font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-16);">${tier.investment}</div>
-        <ul class="sponsor-benefits" style="list-style: none; padding: 0;">
-          ${tier.benefits.map(benefit => `<li style="padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border);">${benefit}</li>`).join('')}
+        <h3>${tier.tier}</h3>
+        <div style="color: var(--color-primary); font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-16);">${tier.investment}</div>
+        <ul style="list-style: none; padding: 0; margin-bottom: var(--space-24);">
+          ${tier.benefits.map(benefit => `<li style="padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border); position: relative; padding-left: var(--space-20);"><span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">✓</span>${benefit}</li>`).join('')}
         </ul>
-        <a href="mailto:media@kaaonline.org?subject=Sponsorship%20Inquiry%20-%20${encodeURIComponent(tier.name)}" class="btn btn--primary mt-8">Become a Sponsor</a>
+        <a href="mailto:${appData.contact.email}?subject=Sponsorship%20Inquiry%20-%20${encodeURIComponent(tier.tier)}" class="btn btn--primary">Become a Sponsor</a>
       </div>
     `;
     sponsorsGrid.appendChild(sponsorCard);
   });
+  
+  console.log('✅ Sponsors populated');
 }
 
-// Modal functionality
+// Modal functionality with error checking
 function initializeModal() {
-  console.log('Initializing modal...');
+  console.log('🪟 Initializing modal...');
   
   if (!modal || !modalClose) {
-    console.error('Modal elements not found');
+    console.error('❌ Modal elements not found - modal functionality disabled');
     return;
   }
   
   modalClose.addEventListener('click', function(e) {
-    console.log('Modal close clicked');
+    console.log('✖️ Modal close clicked');
     e.preventDefault();
     e.stopPropagation();
     closeArtistModal();
@@ -539,51 +614,59 @@ function initializeModal() {
   
   modal.addEventListener('click', function(e) {
     if (e.target === modal) {
-      console.log('Modal background clicked');
+      console.log('🎯 Modal background clicked');
       closeArtistModal();
     }
   });
+  
+  console.log('✅ Modal initialized');
 }
 
-// Open artist modal
+// Open artist modal with better error handling
 function openArtistModal(artistName) {
-  console.log('Opening artist modal for:', artistName);
+  console.log('🚀 Opening artist modal for:', artistName);
   
-  if (!modal || !modalTitle || !modalBody) {
-    console.error('Modal elements not found');
+  if (!modal) {
+    console.error('❌ Modal element not found');
+    showNotification(`Sorry, unable to display information for ${artistName}. Please contact us directly.`, 'error');
     return;
   }
   
-  // Store the currently focused element
+  if (!modalTitle || !modalBody) {
+    console.error('❌ Modal content elements not found');
+    return;
+  }
+  
   lastFocusedElement = document.activeElement;
   
   modalTitle.textContent = artistName;
   modalBody.innerHTML = `
-    <p>This talented artist is a valued member of the Kokomo Art Association. Each artist brings their unique perspective and skill to our vibrant community.</p>
-    <p>To learn more about ${artistName}'s work, upcoming exhibitions, or to purchase their art, please contact us at <a href="mailto:media@kaaonline.org">media@kaaonline.org</a>.</p>
+    <p>This talented artist is a valued member of the Kokomo Art Association. Each artist brings their unique perspective and creative vision to our vibrant community.</p>
+    <p>To learn more about ${artistName}'s work, view their portfolio, inquire about purchasing their art, or discuss commission opportunities, please contact us.</p>
+    <p><strong>Contact:</strong> <a href="mailto:${appData.contact.email}?subject=Artist%20Inquiry%20-%20${encodeURIComponent(artistName)}">${appData.contact.email}</a></p>
   `;
   
   modal.removeAttribute('hidden');
   modal.setAttribute('aria-hidden', 'false');
   modal.style.display = 'flex';
   
-  // Prevent body scroll
   document.body.style.overflow = 'hidden';
   
-  // Focus management
   setTimeout(() => {
     if (modalClose) {
       modalClose.focus();
     }
   }, 100);
+  
+  console.log('✅ Artist modal opened');
 }
 
 // Close artist modal
 function closeArtistModal() {
-  console.log('Closing artist modal');
+  console.log('🚪 Closing artist modal');
   
   if (!modal) {
-    console.error('Modal not found');
+    console.error('❌ Modal element not found');
     return;
   }
   
@@ -592,45 +675,28 @@ function closeArtistModal() {
   modal.style.display = 'none';
   document.body.style.overflow = 'auto';
   
-  // Return focus to the element that opened the modal
   if (lastFocusedElement) {
     lastFocusedElement.focus();
     lastFocusedElement = null;
   }
+  
+  console.log('✅ Artist modal closed');
 }
 
-// Accordion functionality
+// Accordion functionality - now handled directly in populateClasses
 function initializeAccordion() {
-  console.log('Initializing accordion...');
-  
-  // Use event delegation for dynamically created elements
-  document.addEventListener('click', function(e) {
-    const header = e.target.closest('.class-header');
-    if (header) {
-      console.log('Class header clicked');
-      e.preventDefault();
-      e.stopPropagation();
-      toggleAccordion(header);
-    }
-  });
-  
-  document.addEventListener('keydown', function(e) {
-    if (e.target.classList.contains('class-header') && (e.key === 'Enter' || e.key === ' ')) {
-      console.log('Class header key pressed');
-      e.preventDefault();
-      e.stopPropagation();
-      toggleAccordion(e.target);
-    }
-  });
+  console.log('🪗 Accordion initialization handled during content population');
 }
 
 // Toggle accordion
 function toggleAccordion(header) {
-  console.log('Toggling accordion');
+  console.log('🔄 Toggling accordion...');
   
   const content = header.nextElementSibling;
   const toggle = header.querySelector('.class-toggle');
   const isExpanded = header.getAttribute('aria-expanded') === 'true';
+  
+  console.log('📊 Accordion currently expanded:', isExpanded);
   
   if (isExpanded) {
     // Close accordion
@@ -638,9 +704,9 @@ function toggleAccordion(header) {
     toggle.textContent = '+';
     header.setAttribute('aria-expanded', 'false');
     header.classList.remove('active');
-    console.log('Accordion closed');
+    console.log('📕 Accordion closed');
   } else {
-    // Close all other accordions
+    // Close all other accordions first
     document.querySelectorAll('.class-content.active').forEach(activeContent => {
       activeContent.classList.remove('active');
       const activeHeader = activeContent.previousElementSibling;
@@ -655,23 +721,41 @@ function toggleAccordion(header) {
     toggle.textContent = '×';
     header.setAttribute('aria-expanded', 'true');
     header.classList.add('active');
-    console.log('Accordion opened');
+    console.log('📖 Accordion opened');
   }
 }
 
-// Contact form functionality
+// Contact form functionality with improved validation
 function initializeContactForm() {
-  const contactForm = document.querySelector('.contact-form');
-  if (!contactForm) return;
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) {
+    console.error('❌ Contact form not found');
+    return;
+  }
+  
+  console.log('📧 Initializing contact form...');
   
   contactForm.addEventListener('submit', function(e) {
+    console.log('📤 Contact form submitted');
     e.preventDefault();
     
-    const name = document.getElementById('contactName').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
-    const message = document.getElementById('contactMessage').value.trim();
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
     
-    // Basic validation
+    if (!nameInput || !emailInput || !messageInput) {
+      console.error('❌ Form input elements not found');
+      showNotification('Form error: Please refresh the page and try again.', 'error');
+      return;
+    }
+    
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+    
+    console.log('📝 Form data:', { name: !!name, email: !!email, message: !!message });
+    
+    // Validation
     if (!name || !email || !message) {
       showNotification('Please fill in all fields.', 'error');
       return;
@@ -685,17 +769,25 @@ function initializeContactForm() {
     // Create mailto link with form data
     const subject = encodeURIComponent('Contact Form Submission from KAA Website');
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    const mailtoLink = `mailto:media@kaaonline.org?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:${appData.contact.email}?subject=${subject}&body=${body}`;
     
-    // Open email client
-    window.location.href = mailtoLink;
+    console.log('📬 Opening email client...');
     
-    // Reset form
-    contactForm.reset();
-    
-    // Show success message
-    showNotification('Thank you for your message! Your email client should open now.', 'success');
+    // Try to open email client
+    try {
+      window.open(mailtoLink, '_self');
+      
+      // Reset form and show success message
+      contactForm.reset();
+      showNotification('Thank you for your message! Your email client should open now.', 'success');
+      console.log('✅ Contact form processed successfully');
+    } catch (error) {
+      console.error('❌ Error opening email client:', error);
+      showNotification('Unable to open email client. Please email us directly at ' + appData.contact.email, 'error');
+    }
   });
+  
+  console.log('✅ Contact form initialized');
 }
 
 // Scroll animations
@@ -714,12 +806,11 @@ function initializeScrollAnimations() {
     });
   }, observerOptions);
   
-  // Observe all fade sections
   document.querySelectorAll('.fade-section').forEach(section => {
     observer.observe(section);
   });
   
-  // Observe cards for staggered animation
+  // Staggered card animations
   setTimeout(() => {
     const cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
@@ -766,7 +857,6 @@ function initializeParallax() {
     });
   }
   
-  // Throttled scroll listener
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -778,7 +868,6 @@ function initializeParallax() {
 
 // Keyboard navigation
 function initializeKeyboardNavigation() {
-  // Escape key handling
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       if (modal && !modal.hasAttribute('hidden')) {
@@ -807,83 +896,6 @@ function initializeKeyboardNavigation() {
       }
     });
   }
-  
-  // Navigation overlay focus trap
-  if (navOverlay) {
-    navOverlay.addEventListener('keydown', function(e) {
-      if (e.key === 'Tab') {
-        const focusableElements = navOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-        
-        if (e.shiftKey && document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement.focus();
-        } else if (!e.shiftKey && document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
-      }
-    });
-  }
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-  // Remove existing notifications
-  const existingNotifications = document.querySelectorAll('.notification');
-  existingNotifications.forEach(notification => notification.remove());
-  
-  const notification = document.createElement('div');
-  notification.className = `notification notification--${type}`;
-  notification.style.cssText = `
-    position: fixed;
-    top: 100px;
-    right: 24px;
-    background: var(--color-surface);
-    color: var(--color-text);
-    padding: 16px 24px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 2001;
-    backdrop-filter: blur(10px);
-    max-width: 400px;
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  `;
-  
-  if (type === 'error') {
-    notification.style.borderColor = 'var(--color-error)';
-    notification.style.background = 'rgba(255, 84, 89, 0.1)';
-  } else if (type === 'success') {
-    notification.style.borderColor = 'var(--color-primary)';
-    notification.style.background = 'rgba(212, 175, 55, 0.1)';
-  }
-  
-  notification.textContent = message;
-  document.body.appendChild(notification);
-  
-  // Animate in
-  setTimeout(() => {
-    notification.style.transform = 'translateX(0)';
-  }, 10);
-  
-  // Remove notification after 5 seconds
-  setTimeout(() => {
-    notification.style.transform = 'translateX(100%)';
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.parentNode.removeChild(notification);
-      }
-    }, 300);
-  }, 5000);
-}
-
-// Email validation
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
 }
 
 // Smooth scroll for anchor links
@@ -906,30 +918,71 @@ function initializeSmoothScroll() {
   });
 }
 
-// Header scroll effect
-function initializeHeaderScrollEffect() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
+// Show notification with better styling
+function showNotification(message, type = 'info') {
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => notification.remove());
   
-  let lastScrollTop = 0;
-  const scrollThreshold = 100;
+  const notification = document.createElement('div');
+  notification.className = `notification notification--${type}`;
+  notification.style.cssText = `
+    position: fixed;
+    top: 100px;
+    right: 24px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 16px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 2001;
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    font-size: 14px;
+    line-height: 1.4;
+  `;
   
-  window.addEventListener('scroll', debounce(() => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > scrollThreshold) {
-      header.style.background = 'rgba(13, 13, 13, 0.98)';
-      header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-      header.style.background = 'rgba(13, 13, 13, 0.95)';
-      header.style.boxShadow = 'none';
-    }
-    
-    lastScrollTop = scrollTop;
-  }, 10));
+  if (type === 'error') {
+    notification.style.borderColor = '#ff5459';
+    notification.style.background = 'rgba(255, 84, 89, 0.1)';
+  } else if (type === 'success') {
+    notification.style.borderColor = 'var(--color-primary)';
+    notification.style.background = 'rgba(212, 175, 55, 0.1)';
+  }
+  
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 10);
+  
+  setTimeout(() => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 300);
+  }, 5000);
 }
 
-// Performance optimization: Debounce scroll events
+// Email validation
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    closeNavOverlay();
+  }
+});
+
+// Performance optimization
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -942,16 +995,9 @@ function debounce(func, wait) {
   };
 }
 
-// Handle window resize
-window.addEventListener('resize', function() {
-  // Close navigation on resize to prevent layout issues
-  if (window.innerWidth > 768) {
-    closeNavOverlay();
-  }
+// Global error handling
+window.addEventListener('error', function(e) {
+  console.error('Global error caught:', e.error);
 });
 
-// Preloader (if needed)
-window.addEventListener('load', function() {
-  // All resources loaded
-  document.body.classList.add('loaded');
-});
+console.log('🚀 KAA JavaScript loaded successfully');
