@@ -1,0 +1,36 @@
+[
+  {
+    "id": "splash-watercolor",
+    "title": "Splash of Watercolor Exhibit",
+    "start": "2025-07-01",
+    "end": "2025-07-30",
+    "allDay": true,
+    "location": "Kokomo Art Center, 525 W Ricketts St",
+    "description": "Delicately beautiful watercolor artworks by Moore, Arthur, Seidman & Bennett."
+  },
+  {
+    "id": "guest-artist-bass",
+    "title": "Guest Artist Reception: Brandon C. Bass",
+    "start": "2025-07-12T12:00:00",
+    "end": "2025-07-12T15:00:00",
+    "location": "Artworks Gallery, 210 N Main St",
+    "description": "Free reception; portraits, military subjects, pets & landscapes; light refreshments."
+  },
+  {
+    "id": "first-friday-schooled",
+    "title": "First Friday “Get Schooled!”",
+    "start": "2025-08-01T17:30:00",
+    "end": "2025-08-01T20:00:00",
+    "location": "Downtown Kokomo",
+    "description": "Back-to-school themed art demos; KAA hosts open house in Artworks Gallery."
+  },
+  {
+    "id": "junk-journal-wkshp",
+    "title": "Junk Journal Workshop",
+    "start": "2025-03-15T12:00:00",
+    "end": "2025-03-15T16:00:00",
+    "location": "Artworks Gallery, 210 N Main St",
+    "description": "Instructor: Vivian Bennett; $62.50 incl. materials; limited seats."
+  }
+  // Include all other events, following the same pattern
+]
