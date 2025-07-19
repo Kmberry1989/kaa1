@@ -1,4 +1,5 @@
 // Events data from KAA
+
 const eventsData = [
   {
     "id": "splash-watercolor",
@@ -9,15 +10,6 @@ const eventsData = [
     "location": "Kokomo Art Center, 525 W Ricketts St",
     "description": "Delicately beautiful watercolor artworks by Jennie Moore, Judy Arthur, Cissie Seidman, and Dixie Bennett.",
     "type": "exhibit"
-  },
-  {
-    "id": "guest-artist-bass",
-    "title": "Guest Artist Reception: Brandon C. Bass",
-    "start": "2025-07-12T12:00:00",
-    "end": "2025-07-12T15:00:00",
-    "location": "Artworks Gallery, 210 N Main St",
-    "description": "Free reception featuring portraits, military subjects, pets & landscapes by Brandon C. Bass. Light refreshments provided.",
-    "type": "reception"
   },
   {
     "id": "first-friday-aug",
@@ -73,61 +65,11 @@ const eventsData = [
     "location": "Downtown Kokomo",
     "description": "Holiday-themed First Friday with ugly sweater contest and festive art activities.",
     "type": "event"
-  },
-  {
-    "id": "spring-art-show",
-    "title": "97th Annual Spring Art Show",
-    "start": "2025-05-22",
-    "end": "2025-06-01",
-    "allDay": true,
-    "location": "Kokomo Art Center, 525 W Ricketts St",
-    "description": "Annual juried showcase featuring the best of local and regional artists. Closing reception June 1 at 2 PM.",
-    "type": "exhibit"
-  },
-  {
-    "id": "recycled-art-show",
-    "title": "Recycled Art Show",
-    "start": "2025-03-07",
-    "end": "2025-04-25",
-    "allDay": true,
-    "location": "Artworks Gallery, 210 N Main St",
-    "description": "Juried exhibition featuring works created with 80% or more recycled materials. Awards reception April 4.",
-    "type": "exhibit"
-  },
-  {
-    "id": "junk-journal-workshop",
-    "title": "Junk Journal Workshop",
-    "start": "2025-03-15T12:00:00",
-    "end": "2025-03-15T16:00:00",
-    "location": "Artworks Gallery, 210 N Main St",
-    "description": "Create a handmade journal using recycled materials. Instructor: Vivian Bennett. Fee: $62.50 including materials. Limited seats available.",
-    "type": "workshop"
-  },
-  {
-    "id": "photo-show",
-    "title": "2025 Photo Show",
-    "start": "2025-03-05",
-    "end": "2025-03-29",
-    "allDay": true,
-    "location": "Kokomo Art Center, 525 W Ricketts St",
-    "description": "Community photography exhibition showcasing the talent of local photographers.",
-    "type": "exhibit"
-  },
-  {
-    "id": "circus-exhibit",
-    "title": "Circus Is Coming to Town",
-    "start": "2025-05-02",
-    "end": "2025-06-27",
-    "allDay": true,
-    "location": "Kokomo Art Center, 525 W Ricketts St",
-    "description": "Partnership exhibition with the International Circus Museum featuring circus-themed artworks and silent auction items.",
-    "type": "exhibit"
   }
 ];
-
 // Global variables
 let calendar;
-let currentView = 'month';
+let currentView = 'list';
 let filteredEvents = [...eventsData];
 
 // DOM elements
@@ -152,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeEventFilter();
     initializeKeyboardNavigation();
     populateListView();
+    switchToListView();
     
     // Hide loading overlay after short delay to allow calendar render
     setTimeout(() => {

@@ -73,52 +73,10 @@ const appData = {
   ],
   events: [
     {
-      title: "Recycled Art Show",
-      dates: "March 7 - April 25, 2025",
-      venue: "Artworks Gallery",
-      description: "Juried show featuring artwork made with 80% recycled materials. Receptions March 7 & April 4.",
-      details: "70/30 commission split (75/25 for members). Art delivery March 1, pickup April 26."
-    },
-    {
-      title: "Junk Journal Workshop",
-      date: "March 15, 2025",
-      time: "12:00PM - 4:00PM",
-      venue: "Artworks Gallery",
-      instructor: "VIVIAN BENNETT",
-      fee: "$62.50 (includes materials)",
-      description: "Create handmade journals using recycled materials. Limited spots, registration required."
-    },
-    {
-      title: "2025 Photo Show",
-      dates: "March 5 - March 29, 2025",
-      venue: "Kokomo Art Center",
-      description: "Community photography exhibition showcasing the talent of local photographers."
-    },
-    {
-      title: "Circus Is Coming to Town",
-      dates: "May 2 - June 27, 2025",
-      venue: "Kokomo Art Center",
-      description: "Partnership exhibition with the International Circus Museum featuring circus-themed artworks and silent auction items."
-    },
-    {
-      title: "97th Annual Spring Art Show",
-      dates: "May 22 - June 1, 2025",
-      venue: "Kokomo Art Center",
-      hours: "Tue-Sat 1:00PM-4:00PM",
-      description: "Annual juried exhibition featuring local and regional artists. Closing reception June 1 at 2:00PM."
-    },
-    {
       title: "Splash of Watercolor Exhibit",
       dates: "July 1 - July 30, 2025",
       venue: "Kokomo Art Center",
       description: "Delicately beautiful watercolor artworks by Jennie Moore, Judy Arthur, Cissie Seidman, and Dixie Bennett."
-    },
-    {
-      title: "Guest Artist Reception: Brandon C. Bass",
-      date: "July 12, 2025",
-      time: "12:00PM - 3:00PM",
-      venue: "Artworks Gallery",
-      description: "Free reception featuring portraits, military subjects, pets & landscapes by Brandon C. Bass. Light refreshments provided."
     },
     {
       title: "First Friday \"Get Schooled!\"",
@@ -213,8 +171,122 @@ const appData = {
   ]
 };
 
+// Structured event data for calendar links
+
+const eventsCalendarData = [
+  {
+    id: 'splash-watercolor',
+    title: 'Splash of Watercolor Exhibit',
+    start: '2025-07-01',
+    end: '2025-07-30',
+    allDay: true,
+    location: 'Kokomo Art Center, 525 W Ricketts St',
+    description:
+      'Delicately beautiful watercolor artworks by Jennie Moore, Judy Arthur, Cissie Seidman, and Dixie Bennett.'
+  },
+  {
+    id: 'first-friday-aug',
+    title: "First Friday 'Get Schooled!'",
+    start: '2025-08-01T17:30:00',
+    end: '2025-08-01T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Back-to-school themed art demos and activities. KAA hosts open house in Artworks Gallery.'
+  },
+  {
+    id: 'first-friday-sep',
+    title: "First Friday 'Art Walk'",
+    start: '2025-09-05T17:30:00',
+    end: '2025-09-05T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Monthly arts-driven street festival with gallery programming and community art activities.'
+  },
+  {
+    id: 'first-friday-oct',
+    title: "First Friday 'Masquerade'",
+    start: '2025-10-03T17:30:00',
+    end: '2025-10-03T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Halloween-themed First Friday with masquerade activities and special gallery exhibitions.'
+  },
+  {
+    id: 'first-friday-nov',
+    title: "First Friday 'Shop & Stroll'",
+    start: '2025-11-07T17:30:00',
+    end: '2025-11-07T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Holiday shopping-themed First Friday with local artists showcasing gift-worthy works.'
+  },
+  {
+    id: 'holiday-bazaar',
+    title: 'Holiday Bazaar',
+    start: '2025-11-01',
+    end: '2025-12-23',
+    allDay: true,
+    location: 'Artworks Gallery, 210 N Main St',
+    description:
+      'Extended holiday market featuring local artists and craftspeople. Open Mon-Sat 12-4 PM with extended hours on First Fridays.'
+  },
+  {
+    id: 'first-friday-dec',
+    title: "First Friday 'Ugly Sweater'",
+    start: '2025-12-05T17:30:00',
+    end: '2025-12-05T20:00:00',
+    location: 'Downtown Kokomo',
+    description:
+      'Holiday-themed First Friday with ugly sweater contest and festive art activities.'
+  }
+];
+function formatICSDate(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+}
+
+function generateICS(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const description = (event.description || '').replace(/\n/g, '\\n');
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'BEGIN:VEVENT',
+    `SUMMARY:${event.title}`,
+    `DESCRIPTION:${description}`,
+    `LOCATION:${event.location || ''}`,
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\n');
+}
+
+function generateGoogleCalendarLink(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: event.title,
+    dates: `${start}/${end}`,
+    details: event.description || '',
+    location: event.location || '',
+    sf: 'true',
+    output: 'xml'
+  });
+  return `https://www.google.com/calendar/render?${params.toString()}`;
+}
+
+function addCalendarLink(eventInfo) {
+  const eventData = eventsCalendarData.find(e => e.title === eventInfo.title);
+  if (!eventData) return '';
+  return `<div class="calendar-add"><a href="#" class="add-to-calendar" data-event-id="${eventData.id}">+ add to calendar</a></div>`;
+}
+
 // DOM elements
 let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody, navContent;
+let eventsGrid;
+let calendarModal, calendarModalClose, calendarModalLinks;
 let lastFocusedElement = null;
 let isScrolling = false;
 let navScrollTimeout = null;
@@ -256,6 +328,10 @@ function initializeElements() {
   modalTitle = document.getElementById('modalTitle');
   modalBody = document.getElementById('modalBody');
   navContent = navOverlay ? navOverlay.querySelector('.nav-overlay-content') : null;
+  eventsGrid = document.getElementById('eventsGrid');
+  calendarModal = document.getElementById('calendarModal');
+  calendarModalClose = document.getElementById('calendarModalClose');
+  calendarModalLinks = document.getElementById('calendarModalLinks');
   
   console.log('📋 Element status:', {
     hamburger: hamburger ? '✅' : '❌',
@@ -265,7 +341,9 @@ function initializeElements() {
     modalClose: modalClose ? '✅' : '❌',
     modalTitle: modalTitle ? '✅' : '❌',
     modalBody: modalBody ? '✅' : '❌',
-    navContent: navContent ? '✅' : '❌'
+    navContent: navContent ? '✅' : '❌',
+    eventsGrid: eventsGrid ? '✅' : '❌',
+    calendarModal: calendarModal ? '✅' : '❌'
   });
   
   // Ensure modal is hidden initially
@@ -273,6 +351,11 @@ function initializeElements() {
     modal.setAttribute('hidden', '');
     modal.setAttribute('aria-hidden', 'true');
     modal.style.display = 'none';
+  }
+  if (calendarModal) {
+    calendarModal.setAttribute('hidden', '');
+    calendarModal.setAttribute('aria-hidden', 'true');
+    calendarModal.style.display = 'none';
   }
 }
 
@@ -437,6 +520,7 @@ function populateContent() {
     populateClasses();
     populateMembership();
     populateEvents();
+    initializeAddToCalendar();
     populateSponsors();
     console.log('✅ All content populated successfully');
   } catch (error) {
@@ -647,6 +731,7 @@ function populateEvents() {
         <p>${event.description}</p>
         ${event.details ? `<p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">${event.details}</p>` : ''}
         <a href="mailto:${appData.contact.email}?subject=Event%20Information%20-%20${encodeURIComponent(event.title)}" class="btn btn--outline mt-8">Learn More</a>
+        ${addCalendarLink(event)}
       </div>
     `;
     eventsGrid.appendChild(eventCard);
@@ -654,6 +739,7 @@ function populateEvents() {
   
   console.log('✅ Events populated');
 }
+
 
 // Populate sponsors
 function populateSponsors() {
@@ -687,7 +773,7 @@ function populateSponsors() {
 // Modal functionality with error checking
 function initializeModal() {
   console.log('🪟 Initializing modal...');
-  
+
   if (!modal || !modalClose) {
     console.error('❌ Modal elements not found - modal functionality disabled');
     return;
@@ -706,7 +792,21 @@ function initializeModal() {
       closeArtistModal();
     }
   });
-  
+
+  if (calendarModal && calendarModalClose) {
+    calendarModalClose.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeCalendarModal();
+    });
+
+    calendarModal.addEventListener('click', function(e) {
+      if (e.target === calendarModal) {
+        closeCalendarModal();
+      }
+    });
+  }
+
   console.log('✅ Modal initialized');
 }
 
@@ -769,6 +869,57 @@ function closeArtistModal() {
   }
   
   console.log('✅ Artist modal closed');
+}
+
+// Calendar modal functionality
+function openCalendarModal(eventId) {
+  const eventData = eventsCalendarData.find(e => e.id === eventId);
+  if (!calendarModal || !calendarModalLinks || !eventData) {
+    console.error('❌ Unable to open calendar modal');
+    return;
+  }
+
+  const googleUrl = generateGoogleCalendarLink(eventData);
+  const icsData = generateICS(eventData);
+  const icsHref = `data:text/calendar;charset=utf8,${encodeURIComponent(icsData)}`;
+
+  calendarModalLinks.innerHTML = `
+    <a href="${icsHref}" download="${eventData.id}.ics" class="btn btn--primary">Apple</a>
+    <a href="${googleUrl}" target="_blank" rel="noopener" class="btn btn--outline">Google</a>
+    <a href="${icsHref}" download="${eventData.id}.ics" class="btn btn--outline">Outlook</a>
+  `;
+
+  lastFocusedElement = document.activeElement;
+  calendarModal.removeAttribute('hidden');
+  calendarModal.setAttribute('aria-hidden', 'false');
+  calendarModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  setTimeout(() => {
+    if (calendarModalClose) calendarModalClose.focus();
+  }, 100);
+}
+
+function closeCalendarModal() {
+  if (!calendarModal) return;
+  calendarModal.setAttribute('hidden', '');
+  calendarModal.setAttribute('aria-hidden', 'true');
+  calendarModal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
+}
+
+function initializeAddToCalendar() {
+  document.querySelectorAll('.add-to-calendar').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const eventId = this.getAttribute('data-event-id');
+      openCalendarModal(eventId);
+    });
+  });
 }
 
 // Accordion functionality - now handled directly in populateClasses
