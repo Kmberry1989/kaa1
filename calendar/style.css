@@ -881,6 +881,7 @@ h6 { font-size: var(--font-size-md); }
   align-items: center;
 }
 
+
 /* Buttons */
 .btn {
   display: inline-flex;
