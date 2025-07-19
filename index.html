@@ -1,212 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kokomo Art Association – Cinematic Shadow</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokomo Art Association - Bringing Art to the Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hamburger Menu Button -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="loading">
-    <!-- HEADER & HAMBURGER-->
-    <header
-      class="site-header flex justify-between items-center px-16 py-8"
-      id="top"
-    >
-      <a href="#hero" class="logo" aria-label="Kokomo Art Association Home">
-        KAA
-      </a>
-      <button
-        id="menuToggle"
-        class="hamburger btn btn--secondary"
-        aria-label="Toggle navigation menu"
-        aria-controls="navOverlay"
-        aria-expanded="false"
-      >
-        <span class="hamburger__bar"></span>
-        <span class="hamburger__bar"></span>
-        <span class="hamburger__bar"></span>
-      </button>
-    </header>
-
-    <!-- FULL-SCREEN NAVIGATION OVERLAY -->
-    <nav
-      id="navOverlay"
-      class="nav-overlay"
-      aria-label="Primary"
-      hidden
-    >
-      <button
-        id="navClose"
-        class="nav-close btn btn--outline"
-        aria-label="Close Menu"
-      >
-        &times;
-      </button>
-      <ul class="nav-overlay__list" id="overlayNavList">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#galleries">Galleries</a></li>
-        <li><a href="#artists">Artists</a></li>
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#sponsors">Sponsors</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <!-- Full-Screen Navigation Overlay -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <div class="nav-overlay-content">
+      <button class="nav-close btn btn--outline" id="navClose" aria-label="Close navigation">&times;</button>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#galleries" class="nav-link">Galleries</a></li>
+        <li><a href="#artists" class="nav-link">Artists</a></li>
+        <li><a href="#classes" class="nav-link">Classes</a></li>
+        <li><a href="#membership" class="nav-link">Membership</a></li>
+        <li><a href="#events" class="nav-link">Events</a></li>
+        <li><a href="#sponsors" class="nav-link">Sponsors</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-    </nav>
-
-    <!-- MAIN CONTENT -->
-    <main id="mainContent">
-      <!-- HERO -->
-      <section id="hero" class="hero section" data-parallax="0.25">
-        <div class="container flex flex-col items-center justify-center text-center gap-16">
-          <h1 class="hero__title">
-            Bringing <span class="highlight">ART</span> to the Community
-          </h1>
-          <div class="flex gap-16 justify-center flex-wrap">
-            <a
-              class="btn btn--primary"
-              href="mailto:media@kaaonline.org?subject=Membership%20Inquiry"
-              >Become&nbsp;a&nbsp;Member</a
-            >
-            <a href="#events" class="btn btn--outline">View Events</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="about" class="section container fade-section">
-        <h2 class="section__heading">About</h2>
-        <p>
-          Founded in 1926, the Kokomo Art Association (KAA) exists to fulfill a
-          singular mission: <strong>Bringing art to the community</strong>. For
-          nearly a century, KAA has created vibrant spaces where artists,
-          families, students, and supporters come together to celebrate
-          creativity.
-        </p>
-        <h3 class="mt-8 mb-8">A Timeline of Creativity</h3>
-        <ul class="timeline" id="timeline"></ul>
-      </section>
-
-      <!-- GALLERIES -->
-      <section id="galleries" class="section container fade-section">
-        <h2 class="section__heading">Galleries</h2>
-        <div id="galleriesGrid" class="gallery-grid"></div>
-      </section>
-
-      <!-- ARTISTS -->
-      <section id="artists" class="section container fade-section">
-        <h2 class="section__heading">Artists</h2>
-        <div id="artistsGrid" class="artists-grid"></div>
-      </section>
-
-      <!-- CLASSES -->
-      <section id="classes" class="section container fade-section">
-        <h2 class="section__heading">Classes</h2>
-        <div id="classesList" class="classes-list"></div>
-      </section>
-
-      <!-- MEMBERSHIP -->
-      <section id="membership" class="section container fade-section">
-        <h2 class="section__heading">Membership</h2>
-        <div id="membershipGrid" class="membership-grid"></div>
-      </section>
-
-      <!-- EVENTS -->
-      <section id="events" class="section container fade-section">
-        <h2 class="section__heading">Events</h2>
-        <div id="eventsGrid" class="events-grid"></div>
-      </section>
-
-      <!-- SPONSORS -->
-      <section id="sponsors" class="section container fade-section">
-        <h2 class="section__heading">Sponsors</h2>
-        <div id="sponsorsGrid" class="sponsors-grid"></div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="section container fade-section">
-        <h2 class="section__heading">Contact</h2>
-        <form
-          action="mailto:media@kaaonline.org"
-          method="post"
-          enctype="text/plain"
-          class="contact-form flex flex-col gap-16"
-          aria-label="Contact form"
-        >
-          <div class="form-group">
-            <label class="form-label" for="contactName">Name</label>
-            <input
-              id="contactName"
-              name="name"
-              type="text"
-              class="form-control"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactEmail">Email</label>
-            <input
-              id="contactEmail"
-              name="email"
-              type="email"
-              class="form-control"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactMessage">Message</label>
-            <textarea
-              id="contactMessage"
-              name="message"
-              rows="5"
-              class="form-control"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--full-width">
-            Send Message
-          </button>
-        </form>
-        <div class="contact-info mt-8">
-          <p><strong>Email:</strong> media@kaaonline.org</p>
-          <p><strong>Artworks Gallery:</strong> 22 W. Walnut St, Kokomo, IN 46901</p>
-          <p><strong>Kokomo Art Center:</strong> 1500 N. Washington St, Kokomo, IN 46901</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- ARTIST MODAL -->
-    <div
-      id="artistModal"
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="artistModalTitle"
-      hidden
-    >
-      <div class="modal__content card">
-        <button
-          class="modal__close btn btn--outline"
-          id="modalClose"
-          aria-label="Close artist dialog"
-        >
-          &times;
-        </button>
-        <h3 id="artistModalTitle" class="mt-8"></h3>
-        <p id="artistModalBody" class="mt-8"></p>
-      </div>
     </div>
+  </nav>
 
-    <!-- SCRIPTS -->
-    <script src="app.js" defer></script>
-  </body>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-background" data-parallax="0.3"></div>
+      <div class="hero-content fade-section">
+        <h1 class="hero-title">
+          <span class="hero-org">Kokomo Art Association</span>
+          <span class="hero-tagline highlight">Bringing Art to the Community</span>
+        </h1>
+        <p class="hero-subtitle">Since 1926, the Kokomo Art Association has championed the goal of bringing art to the community by bringing the community to art.</p>
+        <div class="hero-buttons">
+          <a href="#membership" class="btn btn--primary">Become a Member</a>
+          <a href="#events" class="btn btn--outline">View Events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+          <p class="about-text">Since 1926, the Kokomo Art Association has championed the goal of bringing art to the community by bringing the community to art. What began as small gatherings has evolved into a vibrant cultural institution serving artists and art lovers throughout Howard County and beyond.</p>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">1926</div>
+              <div class="timeline-content">
+                <h3>Foundation</h3>
+                <p>KAA was founded with the mission of bringing art to the community</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1960s</div>
+              <div class="timeline-content">
+                <h3>Growth</h3>
+                <p>Formal organization and establishment of regular exhibitions</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1980s</div>
+              <div class="timeline-content">
+                <h3>Expansion</h3>
+                <p>Acquired permanent gallery spaces and expanded programming</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Today</div>
+              <div class="timeline-content">
+                <h3>Thriving Community</h3>
+                <p>Two galleries, outdoor displays, and comprehensive art education</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galleries Section -->
+    <section id="galleries" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Our Venues</h2>
+        <div class="galleries-grid" id="galleriesGrid">
+          <!-- Galleries will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Artists Section -->
+    <section id="artists" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Featured Artists</h2>
+        <div class="artists-grid" id="artistsGrid">
+          <!-- Artists will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Classes & Workshops</h2>
+        <div class="classes-accordion" id="classesAccordion">
+          <!-- Classes will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Membership</h2>
+        <p class="membership-intro">Join our community of artists, art lovers, and cultural supporters. Every membership level includes valuable benefits and helps support our mission.</p>
+        <div class="membership-grid" id="membershipGrid">
+          <!-- Membership levels will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-grid" id="eventsGrid">
+          <!-- Events will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Sponsorship Opportunities</h2>
+        <p class="sponsors-intro">Partner with us to support the arts in our community. Your investment helps us continue our mission of bringing art to the community.</p>
+        <div class="sponsors-grid" id="sponsorsGrid">
+          <!-- Sponsor tiers will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-section">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+          </form>
+          
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p><strong>Email:</strong> <a href="mailto:media@kaaonline.org">media@kaaonline.org</a></p>
+            <p><strong>Established:</strong> 1926</p>
+            <p><strong>Mission:</strong> Bringing art to the community by bringing the community to art</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Artist Modal -->
+  <div class="modal" id="artistModal" aria-hidden="true" hidden>
+    <div class="modal-content">
+      <button class="modal-close btn btn--outline" id="modalClose" aria-label="Close modal">&times;</button>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
