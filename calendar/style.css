@@ -1387,9 +1387,9 @@ select.form-control {
   padding: var(--space-32) var(--space-32) var(--space-16);
   border-bottom: 1px solid var(--color-border);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-16);
+  gap: var(--space-8);
   flex-shrink: 0;
 }
 
@@ -1426,6 +1426,21 @@ select.form-control {
   font-weight: 600;
   font-size: var(--font-size-base);
   word-wrap: break-word;
+}
+
+#modalType {
+  margin: var(--space-8) var(--space-32) 0;
+}
+
+.calendar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
+
+.calendar-links a {
+  font-size: var(--font-size-sm);
 }
 
 /* Hide modal when [hidden] attribute is present */

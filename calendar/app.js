@@ -132,7 +132,7 @@ let filteredEvents = [...eventsData];
 
 // DOM elements
 let monthViewBtn, listViewBtn, todayBtn, listView, eventsList, eventTypeFilter;
-let modal, modalClose, modalTitle, modalBody, modalLocation, modalDates, modalType;
+let modal, modalClose, modalTitle, modalBody, modalLocation, modalDates, modalType, modalLinks;
 let loadingOverlay;
 let lastFocusedElement = null;
 
@@ -187,6 +187,7 @@ function initializeElements() {
   modalLocation = document.getElementById('modalLocation');
   modalDates = document.getElementById('modalDates');
   modalType = document.getElementById('modalType');
+  modalLinks = document.getElementById('modalLinks');
   
   // Loading overlay
   loadingOverlay = document.getElementById('loadingOverlay');
@@ -195,7 +196,8 @@ function initializeElements() {
     monthViewBtn: monthViewBtn ? '✅' : '❌',
     listViewBtn: listViewBtn ? '✅' : '❌',
     todayBtn: todayBtn ? '✅' : '❌',
-    modal: modal ? '✅' : '❌'
+    modal: modal ? '✅' : '❌',
+    modalLinks: modalLinks ? '✅' : '❌'
   });
 }
 
@@ -487,6 +489,45 @@ function formatEventDate(startDate, endDate, allDay) {
   return dateString;
 }
 
+// Generate ICS data string for download
+function generateICS(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const description = (event.description || '').replace(/\n/g, '\\n');
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'BEGIN:VEVENT',
+    `SUMMARY:${event.title}`,
+    `DESCRIPTION:${description}`,
+    `LOCATION:${event.location || ''}`,
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\n');
+}
+
+function formatICSDate(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+}
+
+// Build Google Calendar link
+function generateGoogleCalendarLink(event) {
+  const start = formatICSDate(new Date(event.start));
+  const end = formatICSDate(event.end ? new Date(event.end) : new Date(event.start));
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: event.title,
+    dates: `${start}/${end}`,
+    details: event.description || '',
+    location: event.location || '',
+    sf: 'true',
+    output: 'xml'
+  });
+  return `https://www.google.com/calendar/render?${params.toString()}`;
+}
+
 // Initialize modal functionality
 function initializeModal() {
   console.log('🪟 Initializing modal...');
@@ -551,6 +592,14 @@ function openEventModalFromData(eventData) {
   modalLocation.textContent = eventData.location || '';
   modalType.textContent = eventData.type;
   modalType.className = `event-type-badge type-${eventData.type}`;
+
+  // Add to calendar links
+  if (modalLinks) {
+    const googleUrl = generateGoogleCalendarLink(eventData);
+    const icsData = generateICS(eventData);
+    const icsHref = `data:text/calendar;charset=utf8,${encodeURIComponent(icsData)}`;
+    modalLinks.innerHTML = `Add to calendar: <a href="${googleUrl}" target="_blank" rel="noopener" class="btn btn--sm btn--primary">Google</a> <a href="${icsHref}" download="event.ics" class="btn btn--sm btn--outline">Outlook</a> <a href="${icsHref}" download="event.ics" class="btn btn--sm btn--outline">Apple</a>`;
+  }
   
   // Format dates for modal
   const startDate = new Date(eventData.start);

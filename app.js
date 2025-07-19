@@ -214,9 +214,10 @@ const appData = {
 };
 
 // DOM elements
-let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody;
+let hamburger, navOverlay, navClose, modal, modalClose, modalTitle, modalBody, navContent;
 let lastFocusedElement = null;
 let isScrolling = false;
+let navScrollTimeout = null;
 
 // Initialize application when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
@@ -254,6 +255,7 @@ function initializeElements() {
   modalClose = document.getElementById('modalClose');
   modalTitle = document.getElementById('modalTitle');
   modalBody = document.getElementById('modalBody');
+  navContent = navOverlay ? navOverlay.querySelector('.nav-overlay-content') : null;
   
   console.log('📋 Element status:', {
     hamburger: hamburger ? '✅' : '❌',
@@ -262,7 +264,8 @@ function initializeElements() {
     modal: modal ? '✅' : '❌',
     modalClose: modalClose ? '✅' : '❌',
     modalTitle: modalTitle ? '✅' : '❌',
-    modalBody: modalBody ? '✅' : '❌'
+    modalBody: modalBody ? '✅' : '❌',
+    navContent: navContent ? '✅' : '❌'
   });
   
   // Ensure modal is hidden initially
@@ -373,6 +376,11 @@ function openNavOverlay() {
   navOverlay.setAttribute('aria-hidden', 'false');
   hamburger.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
+
+  if (navContent) {
+    navContent.scrollTop = 0;
+    navContent.addEventListener('scroll', handleNavScroll);
+  }
   
   document.body.style.overflow = 'hidden';
   
@@ -399,10 +407,24 @@ function closeNavOverlay() {
   navOverlay.setAttribute('aria-hidden', 'true');
   hamburger.classList.remove('active');
   hamburger.setAttribute('aria-expanded', 'false');
+
+  if (navContent) {
+    navContent.removeEventListener('scroll', handleNavScroll);
+    navContent.classList.remove('scrolling');
+  }
   
   document.body.style.overflow = 'auto';
-  
+
   console.log('✅ Navigation overlay closed');
+}
+
+function handleNavScroll() {
+  if (!navContent) return;
+  navContent.classList.add('scrolling');
+  clearTimeout(navScrollTimeout);
+  navScrollTimeout = setTimeout(() => {
+    navContent.classList.remove('scrolling');
+  }, 150);
 }
 
 // Populate content from data
