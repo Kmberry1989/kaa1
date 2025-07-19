@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokomo Art Association - Events Calendar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calendar-container">
+    <!-- Header -->
+    <header class="calendar-header">
+      <div class="header-content">
+        <div class="header-title">
+          <h1>Kokomo Art Association</h1>
+          <p class="header-subtitle">Events Calendar</p>
+        </div>
+        <div class="header-controls">
+          <button id="todayBtn" class="btn btn--outline">Today</button>
+          <button id="monthViewBtn" class="btn btn--primary active">Month</button>
+          <button id="listViewBtn" class="btn btn--outline">List</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Calendar Views Container -->
+    <div class="calendar-views">
+      <!-- FullCalendar will be rendered here -->
+      <div id="calendar"></div>
+      
+      <!-- List View (initially hidden) -->
+      <div id="listView" class="list-view hidden">
+        <div class="list-header">
+          <h2>Upcoming Events</h2>
+          <div class="list-controls">
+            <select id="eventTypeFilter" class="form-control">
+              <option value="">All Event Types</option>
+              <option value="exhibit">Exhibits</option>
+              <option value="workshop">Workshops</option>
+              <option value="reception">Receptions</option>
+              <option value="event">Events</option>
+              <option value="market">Markets</option>
+            </select>
+          </div>
+        </div>
+        <div id="eventsList" class="events-list">
+          <!-- Events will be populated here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="calendar-legend">
+      <h3>Event Types</h3>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color legend-color--exhibit"></div>
+          <span>Exhibits</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color legend-color--workshop"></div>
+          <span>Workshops</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color legend-color--reception"></div>
+          <span>Receptions</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color legend-color--event"></div>
+          <span>Events</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color legend-color--market"></div>
+          <span>Markets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Detail Modal -->
+  <div id="eventModal" class="modal" aria-hidden="true" hidden>
+    <div class="modal-content">
+      <button class="modal-close btn btn--outline" id="modalClose" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title"></h3>
+        <div id="modalType" class="event-type-badge"></div>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <div id="modalLocation" class="modal-location"></div>
+        <div id="modalDates" class="modal-dates"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>Loading events...</p>
+  </div>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
