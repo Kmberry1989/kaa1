@@ -8,14 +8,16 @@ const appData = {
     venues: [
       {
         name: "Kokomo Art Center",
-        address: "1500 N. Washington St, Kokomo, IN 46901",
-        hours: "Tuesday-Saturday 10am-4pm"
+        address: "525 W. Ricketts Street, Kokomo, IN 46902",
+        phone: "(765) 457-9480",
+        hours: "Tuesday-Saturday 1pm-4pm"
       },
       {
         name: "Artworks Gallery", 
-        address: "22 W. Walnut St, Kokomo, IN 46901",
-        phone: "(765) 457-4400",
-        hours: "Tuesday-Saturday 10am-4pm"
+        address: "210 N. Main Street, Kokomo, IN 46901",
+        phone: "(765) 459-4579",
+        hours: "Monday-Friday 12pm-4pm Saturday 11pm-3pm"
+
       },
       {
         name: "Artist Alley",
@@ -24,7 +26,7 @@ const appData = {
     ]
   },
   artists: [
-    "CAROL ANDERSON", "PEGGY BICKEL", "JANET CHAPMAN", "STEVE CREIGHTON", "TRACY CRUSAN", "CARL GRAFFIS", "RONDA GRAHLFS", "JOAN HAMILTON", "DONNA HESS", "RICHARD HIGGINS", "MARY HOSKINS", "LARRY JOHNSON", "CAROL JOHNSON", "CONNIE KINSLOW", "JANET KORNMAN", "KAREN LONG", "DEBORAH MANN", "CAROL MOSER", "RICHARD NICKEL", "KAREN RHOADS", "DEBORAH RIDDLE", "JANE SEXTON", "MARY SMITH", "ALICE STANTON", "ANGELA WALTHOUR", "DON WILKA", "LOUISE YORDY"
+    "MARILYN ALEMAN", "SHELLEY WILDER", "SARA MCCUBBIN", "DON WILKA", "DIXIE BEN-NET", "STEVE CREIGHTON", "LISA ANANICH FREELAND", "LESLEY WYSONG", "MARK HOBSON", "PEGGY HOBSON", "CORINNE MCAULEY", "ANGELA WALTHOUR", "RAMONA DANIELS", "MICHAEL HICKEY", "CHERYL SULLIVAN", "MARITA BARBER", "TAMMY ROE", "PATRICK REDMON", "ALOVEA CHADWELL", "JAN STIEGLITZ", "VIVIAN BENNETT", "KAT CLOWARD", "LANA KIRTLEY", "BERTIE DAVID", "KAREN GARDNER", "KEN GARDNER", "AVON WATERS"
   ],
   classes: [
     {
@@ -129,23 +131,7 @@ const appData = {
       description: "Transform discarded materials into beautiful art pieces"
     }
   ],
-  sponsor_tiers: [
-    {
-      name: "Gallery Patron",
-      investment: "$250+",
-      benefits: ["Name listed on dedicated 'Thank You' page", "Tagged in collective social media posts"]
-    },
-    {
-      name: "Exhibition Sponsor", 
-      investment: "$500+",
-      benefits: ["Logo on all exhibition marketing materials", "Logo and link on homepage during exhibition"]
-    },
-    {
-      name: "Season Partner",
-      investment: "$1,000+", 
-      benefits: ["Logo prominently featured on homepage for one year", "Dedicated social media post", "Inclusion in all press releases"]
-    }
-  ],
+ 
   timeline: [
     {year: "1926", event: "Kokomo Art Association founded by local artists and patrons"},
     {year: "1930s-1940s", event: "Early exhibits held in community halls and borrowed storefronts"},
