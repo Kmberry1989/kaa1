@@ -159,6 +159,38 @@
   height: auto;
 }
 
+/* Quick links horizontal layout */
+.quick-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.quick-links li {
+  margin: 0;
+}
+
+/* Back to top button */
+#backToTop {
+  position: fixed;
+  right: var(--space-20);
+  bottom: var(--space-20);
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  padding: var(--space-8);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: var(--font-size-xl);
+  display: none;
+}
+
+#backToTop.show {
+  display: block;
+}
+
 /* Sponsor section background and dividers */
 .footer-sponsor-section {
   margin-top: var(--space-32);

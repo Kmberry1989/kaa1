@@ -71,31 +71,7 @@ const appData = {
       description: "Hand-building and wheel throwing ceramic techniques."
     }
   ],
-  events: [
-    {
-      title: "Recycled Art Show",
-      dates: "March 7 - April 25, 2025",
-      venue: "Artworks Gallery",
-      description: "Juried show featuring artwork made with 80% recycled materials. Receptions March 7 & April 4.",
-      details: "70/30 commission split (75/25 for members). Art delivery March 1, pickup April 26."
-    },
-    {
-      title: "Junk Journal Workshop", 
-      date: "March 15, 2025",
-      time: "12:00PM - 4:00PM",
-      venue: "Artworks Gallery",
-      instructor: "VIVIAN BENNETT",
-      fee: "$62.50 (includes materials)",
-      description: "Create handmade journals using recycled materials. Limited spots, registration required."
-    },
-    {
-      title: "97th Annual Spring Art Show",
-      dates: "Late May - June 1, 2025", 
-      venue: "Kokomo Art Center",
-      hours: "Tue-Sat 1:00PM-4:00PM",
-      description: "Annual juried exhibition featuring local and regional artists. Closing reception June 1 at 2:00PM."
-    }
-  ],
+  events: [],
   membership: [
     {
       level: "Student",
@@ -169,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
       initializeContactForm();
       initializeKeyboardNavigation();
       initializeSmoothScroll();
+      initializeBackToTop();
       
       console.log('✅ Kokomo Art Association website fully initialized');
     } catch (error) {
@@ -536,8 +513,14 @@ function populateEvents() {
     console.error('❌ Events grid not found');
     return;
   }
-  
+
   console.log('🎪 Populating events...');
+
+  if (appData.events.length === 0) {
+    eventsGrid.innerHTML = '<p class="no-events">Check back soon for upcoming events.</p>';
+    console.log('ℹ️ No events to display');
+    return;
+  }
   
   appData.events.forEach(event => {
     const eventCard = document.createElement('div');
@@ -908,13 +891,27 @@ function initializeSmoothScroll() {
         const headerOffset = 80;
         const elementPosition = target.offsetTop;
         const offsetPosition = elementPosition - headerOffset;
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
         });
       }
     });
+  });
+}
+
+// Back to top button
+function initializeBackToTop() {
+  const backToTop = document.getElementById('backToTop');
+  if (!backToTop) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
   });
 }
 
